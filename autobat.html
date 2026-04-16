@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autobat - Le Logiciel BTP Intelligent</title>
+    <meta name="description" content="Gérez vos chantiers, devis et factures avec Autobat. Le logiciel tout-en-un pour les artisans du bâtiment.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .feature-card.dark {
+            background: var(--bg-dark);
+            border-color: var(--border-dark);
+            color: white;
+        }
+        .feature-card.dark h3 { color: white; }
+        .feature-card.dark p { color: var(--text-light); }
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(99,102,241,0.12);
+            transform: scale(1.03);
+            position: relative;
+        }
+        .pricing-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+        .pricing-card.dark-pricing {
+            background: var(--bg-dark);
+            border-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .pricing-card.dark-pricing h4,
+        .pricing-card.dark-pricing .price { color: white; }
+        .pricing-card.dark-pricing p { color: var(--text-light); }
+        .pricing-card.dark-pricing ul li { color: var(--text-light); }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+        }
+        .price {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1;
+            margin: 16px 0 8px;
+        }
+        .price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .pricing-card ul {
+            text-align: left;
+            margin: 24px 0;
+            flex-grow: 1;
+        }
+        .pricing-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .pricing-card ul li svg {
+            width: 16px; height: 16px;
+            stroke: var(--accent);
+            fill: none; stroke-width: 2.5;
+            flex-shrink: 0;
+        }
+        .calendar-mockup {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            font-size: 0.75rem;
+            font-family: var(--font-heading);
+        }
+        .calendar-mockup .day-header {
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 4px;
+        }
+        .calendar-mockup .day {
+            text-align: center;
+            padding: 8px 4px;
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+        .calendar-mockup .day.event-blue {
+            background: rgba(99,102,241,0.12);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .calendar-mockup .day.event-amber {
+            background: rgba(245,158,11,0.12);
+            color: var(--amber);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="logiciels.html" class="active">Logiciels & IA</a></li>
+            <li><a href="contact.html" class="btn btn-primary">Nous contacter</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section style="min-height: 80vh; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg-body) 100%);">
+            <div class="container text-center">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: var(--radius-full); padding: 6px 16px; margin-bottom: 24px;">
+                        <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block;"></span>
+                        <span style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--accent-dark);">Mise à jour v2.4 : Module IA disponible</span>
+                    </div>
+                    <h1 class="reveal">Le copilote intelligent des <span class="accent-text">pros du bâtiment.</span></h1>
+                    <p class="lead reveal" style="margin: 0 auto 36px; max-width: 650px;">
+                        Générez vos devis automatiquement grâce à l'IA et suivez la rentabilité de vos chantiers en temps réel. Autobat automatise l'administratif pour que vous puissiez vous concentrer sur votre métier.
+                    </p>
+                    <div class="reveal" style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-primary">
+                            Démarrer gratuitement
+                            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <a href="#fonctionnalites" class="btn btn-outline">
+                            Voir les fonctionnalités
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="fonctionnalites">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 60px;">
+                    <span class="tag reveal">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        Fonctionnalités
+                    </span>
+                    <h2 class="reveal">Tout ce qu'il vous faut</h2>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 28px;">
+                    <div class="feature-card reveal">
+                        <div class="card-icon" style="margin-bottom: 20px;">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        </div>
+                        <h3>Devis Intelligents & Rapides</h3>
+                        <p>Gérez vos devis fournisseur et client directement sur notre logiciel accompagné par l'IA.</p>
+                    </div>
+                    <div class="feature-card dark reveal">
+                        <div class="card-icon" style="margin-bottom: 20px; background: rgba(99,102,241,0.15);">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>Rentabilité</h3>
+                        <p>Suivez vos marges en temps réel. Ne perdez plus d'argent sur les fournitures.</p>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="feature-card reveal" style="border-color: var(--primary);">
+                        <div class="card-icon" style="margin-bottom: 20px;">
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                        </div>
+                        <h3>Application Mobile</h3>
+                        <p>Vos chantiers dans la poche. Prenez des photos, pointez les heures et accédez au planning même hors ligne.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="card-icon" style="margin-bottom: 20px; background: rgba(34,197,94,0.08);">
+                            <svg viewBox="0 0 24 24" style="stroke: var(--accent);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        </div>
+                        <h3>Planning Intelligent</h3>
+                        <p>Glissez-déposez vos interventions. En cas de retard, Autobat recalcule les disponibilités automatiquement.</p>
+                        <div class="calendar-mockup" style="margin-top: 20px;">
+                            <div class="day-header">L</div><div class="day-header">M</div><div class="day-header">M</div><div class="day-header">J</div><div class="day-header">V</div><div class="day-header">S</div><div class="day-header">D</div>
+                            <div class="day">1</div><div class="day">2</div><div class="day event-blue">3</div><div class="day event-blue">4</div><div class="day event-blue">5</div><div class="day">6</div><div class="day">7</div>
+                            <div class="day">8</div><div class="day event-amber">9</div><div class="day">10</div><div class="day">11</div><div class="day event-blue">12</div><div class="day event-blue">13</div><div class="day">14</div>
+                            <div class="day event-blue">15</div><div class="day event-blue">16</div><div class="day event-blue">17</div><div class="day">18</div><div class="day event-amber">19</div><div class="day">20</div><div class="day">21</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section id="tarifs" style="background: var(--bg-alt);">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 60px;">
+                    <span class="tag reveal">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        Tarifs
+                    </span>
+                    <h2 class="reveal">Des offres adaptées à votre taille</h2>
+                </div>
+
+                <div class="grid-3">
+                    <!-- ESSENTIEL -->
+                    <div class="pricing-card reveal">
+                        <h4>Essentiel</h4>
+                        <div class="price">200€ <span>/mois</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">Pour démarrer</p>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Devis & Factures illimités</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> App Mobile (Basique)</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Support Email</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline btn-full">Prendre contact</a>
+                    </div>
+
+                    <!-- PRO -->
+                    <div class="pricing-card featured reveal">
+                        <div class="pricing-badge">Recommandé</div>
+                        <h4>PRO</h4>
+                        <div class="price" style="color: var(--primary);">400€ <span>/mois</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">Pour les PME</p>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Tout l'Essentiel +</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Connexion Bancaire</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Planning Avancé</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Rentabilité Chantiers</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary btn-full">Prendre contact</a>
+                    </div>
+
+                    <!-- ELITE -->
+                    <div class="pricing-card dark-pricing reveal">
+                        <h4>ÉLITE</h4>
+                        <div class="price">700€ <span style="color: var(--text-light);">/mois</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">Pour la performance</p>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24" style="stroke: var(--primary-light);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> IA Générative (Devis)</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Support Prioritaire 24/7</li>
+                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> API & Intégrations</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-white btn-full">Prendre contact</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section>
+            <div class="container">
+                <div class="cta-block reveal">
+                    <h2>Prêt à simplifier votre gestion ?</h2>
+                    <p>Réservez une démo gratuite et découvrez comment Autobat peut transformer votre quotidien.</p>
+                    <a href="contact.html" class="btn btn-white">
+                        Réserver une démo
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>SOLAYIA<span class="accent-text">.</span></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Une solution développée par <a href="index.html" style="color: var(--primary-light);">Solayia</a>.</p>
+                </div>
+                <div>
+                    <h4>Produit</h4>
+                    <ul>
+                        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Nous contacter</a></li>
+                        <li><a href="legal.html">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Autobat / Solayia. Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

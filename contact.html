@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Solayia</title>
+    <meta name="description" content="Contactez Solayia pour discuter de votre projet digital. Premier audit offert.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="logiciels.html">Logiciels & IA</a></li>
+            <li><a href="contact.html" class="btn btn-primary active" aria-current="page">Nous contacter</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section style="min-height: 85vh; display: flex; align-items: center; padding-top: 100px;">
+            <div class="container grid-2" style="align-items: start;">
+                <!-- INFO -->
+                <div class="reveal-left">
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Contact
+                    </span>
+                    <h1>Parlons de <span class="accent-text">votre projet.</span></h1>
+                    <p class="lead" style="margin-bottom: 40px;">Besoin d'une démo ou d'un devis ? Remplissez le formulaire ci-contre.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div class="card-icon" style="flex-shrink: 0;">
+                                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Siège Social</h4>
+                                <p style="font-size: 0.9rem;">60 rue François 1er, 75008 Paris, FRANCE</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 16px;">
+                            <div class="card-icon" style="flex-shrink: 0;">
+                                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Email</h4>
+                                <p style="font-size: 0.9rem;"><a href="mailto:contact@solayia.fr" style="color: var(--primary);">contact@solayia.fr</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORM -->
+                <div class="reveal-right">
+                    <form action="#" method="POST" style="background: var(--bg-card); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.04);">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email professionnel</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="nom@entreprise.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Sujet</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="" disabled selected>Choisir un sujet</option>
+                                <option value="demo">Démo Logiciel (Autobat / Avis)</option>
+                                <option value="site">Création de Site Web</option>
+                                <option value="design">Studio Design / Drone</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">J'accepte que mes données soient traitées pour répondre à ma demande, conformément à la <a href="legal.html">Politique de Confidentialité</a>.</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Envoyer
+                            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>SOLAYIA<span class="accent-text">.</span></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Agence digitale & Laboratoire IA.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="logiciels.html">Logiciels</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="legal.html#confidentialite">Politique de Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Solayia. Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
