@@ -77,25 +77,14 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .portfolio-iframe-wrap {
+        .portfolio-screenshot {
             position: absolute;
             top: 40px;
             left: 0;
-            width: 200%;
-            height: 200%;
-            transform: scale(0.5);
-            transform-origin: top left;
-            pointer-events: none;
-        }
-        .portfolio-iframe-wrap iframe {
             width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
+            height: calc(100% - 40px);
+            object-fit: cover;
+            object-position: top center;
         }
 
         /* Card Info */
@@ -243,10 +232,7 @@
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
                                 <div class="browser-url">solayia.github.io/installe-ta-clim/</div>
                             </div>
-                            <div class="portfolio-iframe-wrap">
-                                <iframe src="https://solayia.github.io/installe-ta-clim/" loading="lazy" title="Aperçu Installe ta Clim"></iframe>
-                            </div>
-                            <div class="portfolio-overlay"></div>
+                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/installe-ta-clim/" alt="Aperçu Installe ta Clim" loading="lazy">
                         </div>
                         <div class="portfolio-info">
                             <div class="portfolio-tags">
@@ -270,10 +256,7 @@
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
                                 <div class="browser-url">solayia.github.io/phil-elec82/</div>
                             </div>
-                            <div class="portfolio-iframe-wrap">
-                                <iframe src="https://solayia.github.io/phil-elec82/" loading="lazy" title="Aperçu Phil-Elec82"></iframe>
-                            </div>
-                            <div class="portfolio-overlay"></div>
+                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/phil-elec82/" alt="Aperçu Phil-Elec82" loading="lazy">
                         </div>
                         <div class="portfolio-info">
                             <div class="portfolio-tags">
@@ -296,10 +279,7 @@
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
                                 <div class="browser-url">solayia.github.io/coach-elite/</div>
                             </div>
-                            <div class="portfolio-iframe-wrap">
-                                <iframe src="https://solayia.github.io/coach-elite/" loading="lazy" title="Aperçu Coach Elite"></iframe>
-                            </div>
-                            <div class="portfolio-overlay"></div>
+                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/coach-elite/" alt="Aperçu Coach Elite" loading="lazy">
                         </div>
                         <div class="portfolio-info">
                             <div class="portfolio-tags">
@@ -323,10 +303,7 @@
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
                                 <div class="browser-url">solayia.github.io/sneakers-shop/</div>
                             </div>
-                            <div class="portfolio-iframe-wrap">
-                                <iframe src="https://solayia.github.io/sneakers-shop/" loading="lazy" title="Aperçu Sneakers Shop"></iframe>
-                            </div>
-                            <div class="portfolio-overlay"></div>
+                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/sneakers-shop/" alt="Aperçu Sneakers Shop" loading="lazy">
                         </div>
                         <div class="portfolio-info">
                             <div class="portfolio-tags">
@@ -349,10 +326,7 @@
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
                                 <div class="browser-url">solayia.github.io/immo-am/</div>
                             </div>
-                            <div class="portfolio-iframe-wrap">
-                                <iframe src="https://solayia.github.io/immo-am/" loading="lazy" title="Aperçu Immo AM"></iframe>
-                            </div>
-                            <div class="portfolio-overlay"></div>
+                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/immo-am/" alt="Aperçu Immo AM" loading="lazy">
                         </div>
                         <div class="portfolio-info">
                             <div class="portfolio-tags">
@@ -373,7 +347,7 @@
                         <div class="portfolio-preview" style="background: var(--bg-dark); display: flex; align-items: center; justify-content: center;">
                             <div class="browser-bar" style="background: #1E293B; border-color: rgba(255,255,255,0.08);">
                                 <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url" style="background: rgba(255,255,255,0.08); color: #94A3B8; border-color: rgba(255,255,255,0.06);">app.autobat.fr</div>
+                                <div class="browser-url" style="background: rgba(255,255,255,0.08); color: #94A3B8; border-color: rgba(255,255,255,0.06);">autobat.pro</div>
                             </div>
                             <div style="padding-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
                                 <img src="assets/logo-autobat.jpg" alt="Autobat AI" style="width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
@@ -389,7 +363,7 @@
                             </div>
                             <h3>Autobat AI</h3>
                             <p>Logiciel de gestion BTP avec IA. Devis automatiques, planning intelligent, facturation et app mobile pour les artisans du bâtiment.</p>
-                            <a href="autobat.html" class="portfolio-link">
+                            <a href="https://autobat.pro/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
                                 Voir le produit
                                 <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                             </a>
