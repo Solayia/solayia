@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réalisations - Solayia</title>
+    <meta name="description" content="Découvrez les projets réalisés par Solayia : sites web, applications, e-commerce et logiciels pour nos clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* PORTFOLIO GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
+        }
+
+        /* Browser Preview */
+        .portfolio-preview {
+            position: relative;
+            background: var(--bg-alt);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+        .browser-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #F1F5F9;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .browser-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #E2E8F0;
+        }
+        .browser-dots span:first-child { background: #FCA5A5; }
+        .browser-dots span:nth-child(2) { background: #FDE68A; }
+        .browser-dots span:last-child { background: #86EFAC; }
+        .browser-url {
+            flex: 1;
+            background: #FFF;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .portfolio-iframe-wrap {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+        .portfolio-iframe-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* Card Info */
+        .portfolio-info {
+            padding: 28px 32px;
+        }
+        .portfolio-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .portfolio-tag {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--primary);
+        }
+        .portfolio-tag.green { background: rgba(34,197,94,0.08); color: var(--accent-dark); }
+        .portfolio-tag.amber { background: rgba(245,158,11,0.08); color: #B45309; }
+        .portfolio-tag.red { background: rgba(239,68,68,0.08); color: #DC2626; }
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .portfolio-info p {
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: gap 0.2s ease;
+        }
+        .portfolio-card:hover .portfolio-link { gap: 12px; }
+        .portfolio-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Featured (first card bigger) */
+        .portfolio-card.featured {
+            grid-column: 1 / -1;
+        }
+        .portfolio-card.featured .portfolio-preview {
+            aspect-ratio: 21/9;
+        }
+
+        /* Filters */
+        .portfolio-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        .filter-btn {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-card.featured { grid-column: auto; }
+            .portfolio-card.featured .portfolio-preview { aspect-ratio: 16/10; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="realisations.html" class="active" aria-current="page">Réalisations</a></li>
+            <li><a href="logiciels.html">Logiciels & IA</a></li>
+            <li><a href="contact.html" class="btn btn-primary">Nous contacter</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- HEADER -->
+        <section style="min-height: 45vh; display: flex; align-items: center; padding-top: 100px; background: var(--bg-alt);">
+            <div class="container">
+                <div style="max-width: 750px;">
+                    <span class="tag reveal">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        Portfolio
+                    </span>
+                    <h1 class="reveal">Nos <span class="accent-text">réalisations.</span></h1>
+                    <p class="lead reveal">Chaque projet est une preuve de notre savoir-faire. Découvrez ce que nous avons construit pour nos clients.</p>
+                </div>
+
+                <!-- FILTERS -->
+                <div class="portfolio-filters reveal">
+                    <button class="filter-btn active" data-filter="all">Tout</button>
+                    <button class="filter-btn" data-filter="site-vitrine">Site Vitrine</button>
+                    <button class="filter-btn" data-filter="e-commerce">E-commerce</button>
+                    <button class="filter-btn" data-filter="logiciel">Logiciel</button>
+                    <button class="filter-btn" data-filter="immobilier">Immobilier</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section>
+            <div class="container">
+                <div class="portfolio-grid">
+
+                    <!-- INSTALLE TA CLIM — Featured -->
+                    <article class="portfolio-card featured reveal" data-category="site-vitrine">
+                        <div class="portfolio-preview">
+                            <div class="browser-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">solayia.github.io/installe-ta-clim/</div>
+                            </div>
+                            <div class="portfolio-iframe-wrap">
+                                <iframe src="https://solayia.github.io/installe-ta-clim/" loading="lazy" title="Aperçu Installe ta Clim"></iframe>
+                            </div>
+                            <div class="portfolio-overlay"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Site Vitrine</span>
+                                <span class="portfolio-tag green">SEO Local</span>
+                                <span class="portfolio-tag amber">Génération de Leads</span>
+                            </div>
+                            <h3>Installe ta Clim</h3>
+                            <p>Site vitrine pour un installateur de climatisation. Design moderne, formulaire de devis intégré et optimisation SEO locale pour capter les clients de la zone.</p>
+                            <a href="https://solayia.github.io/installe-ta-clim/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                Voir le site
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- PHIL-ELEC82 -->
+                    <article class="portfolio-card reveal" data-category="site-vitrine">
+                        <div class="portfolio-preview">
+                            <div class="browser-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">solayia.github.io/phil-elec82/</div>
+                            </div>
+                            <div class="portfolio-iframe-wrap">
+                                <iframe src="https://solayia.github.io/phil-elec82/" loading="lazy" title="Aperçu Phil-Elec82"></iframe>
+                            </div>
+                            <div class="portfolio-overlay"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Site Vitrine</span>
+                                <span class="portfolio-tag green">Artisan</span>
+                            </div>
+                            <h3>Phil-Elec82</h3>
+                            <p>Landing page professionnelle pour un électricien-plombier. Mise en avant des services, zone d'intervention et prise de contact rapide.</p>
+                            <a href="https://solayia.github.io/phil-elec82/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                Voir le site
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- COACH ELITE -->
+                    <article class="portfolio-card reveal" data-category="site-vitrine">
+                        <div class="portfolio-preview">
+                            <div class="browser-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">solayia.github.io/coach-elite/</div>
+                            </div>
+                            <div class="portfolio-iframe-wrap">
+                                <iframe src="https://solayia.github.io/coach-elite/" loading="lazy" title="Aperçu Coach Elite"></iframe>
+                            </div>
+                            <div class="portfolio-overlay"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Site Vitrine</span>
+                                <span class="portfolio-tag red">Dark Theme</span>
+                                <span class="portfolio-tag amber">Animations</span>
+                            </div>
+                            <h3>Coach Elite</h3>
+                            <p>Landing page premium pour un coach sportif haute performance. Thème sombre, animations au scroll, compteurs animés et design agressif.</p>
+                            <a href="https://solayia.github.io/coach-elite/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                Voir le site
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- SNEAKERS SHOP -->
+                    <article class="portfolio-card reveal" data-category="e-commerce">
+                        <div class="portfolio-preview">
+                            <div class="browser-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">solayia.github.io/sneakers-shop/</div>
+                            </div>
+                            <div class="portfolio-iframe-wrap">
+                                <iframe src="https://solayia.github.io/sneakers-shop/" loading="lazy" title="Aperçu Sneakers Shop"></iframe>
+                            </div>
+                            <div class="portfolio-overlay"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">E-commerce</span>
+                                <span class="portfolio-tag green">Panier</span>
+                            </div>
+                            <h3>Sneakers Shop</h3>
+                            <p>Boutique e-commerce de sneakers. Catalogue produits, système de panier, filtres par catégorie et design tendance.</p>
+                            <a href="https://solayia.github.io/sneakers-shop/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                Voir le site
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- IMMO-AM -->
+                    <article class="portfolio-card reveal" data-category="immobilier">
+                        <div class="portfolio-preview">
+                            <div class="browser-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">solayia.github.io/immo-am/</div>
+                            </div>
+                            <div class="portfolio-iframe-wrap">
+                                <iframe src="https://solayia.github.io/immo-am/" loading="lazy" title="Aperçu Immo AM"></iframe>
+                            </div>
+                            <div class="portfolio-overlay"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Immobilier</span>
+                                <span class="portfolio-tag green">Annonces</span>
+                            </div>
+                            <h3>Immo AM</h3>
+                            <p>Site pour une agence immobilière à Toulouse. Catalogue de biens, recherche avancée et prise de rendez-vous en ligne.</p>
+                            <a href="https://solayia.github.io/immo-am/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                Voir le site
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- AUTOBAT -->
+                    <article class="portfolio-card reveal" data-category="logiciel">
+                        <div class="portfolio-preview" style="background: var(--bg-dark); display: flex; align-items: center; justify-content: center;">
+                            <div class="browser-bar" style="background: #1E293B; border-color: rgba(255,255,255,0.08);">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url" style="background: rgba(255,255,255,0.08); color: #94A3B8; border-color: rgba(255,255,255,0.06);">app.autobat.fr</div>
+                            </div>
+                            <div style="padding-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                                <img src="assets/logo-autobat.jpg" alt="Autobat AI" style="width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+                                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: white;">Autobat AI</span>
+                                <span style="font-size: 0.85rem; color: #94A3B8;">Logiciel BTP intelligent</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Logiciel SaaS</span>
+                                <span class="portfolio-tag amber">IA</span>
+                                <span class="portfolio-tag red">BTP</span>
+                            </div>
+                            <h3>Autobat AI</h3>
+                            <p>Logiciel de gestion BTP avec IA. Devis automatiques, planning intelligent, facturation et app mobile pour les artisans du bâtiment.</p>
+                            <a href="autobat.html" class="portfolio-link">
+                                Voir le produit
+                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section>
+            <div class="container">
+                <div class="cta-block reveal">
+                    <h2>Votre projet pourrait être le prochain.</h2>
+                    <p>Chaque réalisation commence par une conversation. Parlons de vos ambitions et construisons ensemble votre succès digital.</p>
+                    <a href="contact.html" class="btn btn-white">
+                        Démarrer mon projet
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>SOLAYIA<span class="accent-text">.</span></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Agence digitale & Laboratoire IA.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="realisations.html">Réalisations</a></li>
+                        <li><a href="logiciels.html">Logiciels</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="legal.html#confidentialite">Politique de Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Solayia. Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Portfolio filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.portfolio-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => { card.style.display = 'none'; }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
