@@ -489,6 +489,33 @@
         @media (max-width: 480px) {
             .process-grid { grid-template-columns: 1fr; }
         }
+        /* ===== DARK NAVBAR ===== */
+        .navbar-dark {
+            background: rgba(6,6,10,0.7) !important;
+            border-color: rgba(255,255,255,0.06) !important;
+        }
+        .navbar-dark .logo { color: #FFF; }
+        .navbar-dark .nav-links a { color: rgba(255,255,255,0.75); }
+        .navbar-dark .nav-links a:hover,
+        .navbar-dark .nav-links a.active { color: #FFF; }
+        .navbar-dark .nav-links a.btn { color: #FFF; }
+        .navbar-dark .burger div { background: #FFF; }
+        .navbar-dark .nav-links a:not(.btn)::after { background: #FFF; }
+
+        /* When scrolled to light section */
+        .navbar-light {
+            background: rgba(255,255,255,0.92) !important;
+            border-color: rgba(0,0,0,0.06) !important;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+        }
+        .navbar-light .logo { color: var(--text-main); }
+        .navbar-light .nav-links a { color: var(--text-muted); }
+        .navbar-light .nav-links a:hover,
+        .navbar-light .nav-links a.active { color: var(--primary); }
+        .navbar-light .nav-links a.btn { color: #FFF; }
+        .navbar-light .burger div { background: var(--text-main); }
+        .navbar-light .nav-links a:not(.btn)::after { background: var(--primary); }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-aurora::before, .hero-aurora::after { animation: none; }
             .scroll-line::after { animation: none; }
@@ -498,11 +525,11 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar" role="navigation" aria-label="Menu principal" style="background: rgba(6,6,10,0.7); border-color: rgba(255,255,255,0.06);">
-        <a href="index.html" class="logo" style="color: #FFF;">SOLAYIA<span>.</span></a>
-        <div class="burger" aria-label="Menu"><div class="line1" style="background:#FFF;"></div><div class="line2" style="background:#FFF;"></div><div class="line3" style="background:#FFF;"></div></div>
+    <nav class="navbar navbar-dark" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
         <ul class="nav-links">
-            <li><a href="index.html" class="active" aria-current="page" style="color: #FFF;">Accueil</a></li>
+            <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="realisations.html">Réalisations</a></li>
             <li><a href="contact.html" class="btn btn-primary">Nous contacter</a></li>
@@ -754,21 +781,15 @@
 
     <script src="script.js"></script>
     <script>
-        // Dark navbar transition on scroll
-        const nav = document.querySelector('.navbar');
+        // Navbar dark/light transition on scroll
+        const navEl = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > window.innerHeight - 100) {
-                nav.style.background = 'rgba(255,255,255,0.9)';
-                nav.style.borderColor = 'rgba(0,0,0,0.06)';
-                nav.querySelector('.logo').style.color = '';
-                nav.querySelectorAll('.burger div').forEach(d => d.style.background = '');
-                nav.querySelector('.active').style.color = '';
+                navEl.classList.remove('navbar-dark');
+                navEl.classList.add('navbar-light');
             } else {
-                nav.style.background = 'rgba(6,6,10,0.7)';
-                nav.style.borderColor = 'rgba(255,255,255,0.06)';
-                nav.querySelector('.logo').style.color = '#FFF';
-                nav.querySelectorAll('.burger div').forEach(d => d.style.background = '#FFF');
-                nav.querySelector('.active').style.color = '#FFF';
+                navEl.classList.remove('navbar-light');
+                navEl.classList.add('navbar-dark');
             }
         }, { passive: true });
     </script>
