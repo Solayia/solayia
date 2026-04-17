@@ -7,17 +7,502 @@
     <meta name="description" content="Solayia : Agence digitale 360°. Création de sites web, logiciels métiers et stratégies de croissance pour les entreprises.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== AURORA HERO ===== */
+        .hero-aurora {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: #06060A;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-aurora::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(99,102,241,0.2) 0%, transparent 60%);
+            animation: aurora1 10s ease-in-out infinite alternate;
+            border-radius: 50%;
+        }
+        .hero-aurora::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -15%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(34,197,94,0.12) 0%, transparent 60%);
+            animation: aurora2 12s ease-in-out infinite alternate;
+            border-radius: 50%;
+        }
+        @keyframes aurora1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 8%) scale(1.1); }
+        }
+        @keyframes aurora2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-5%, -5%) scale(1.15); }
+        }
+        .hero-aurora .container { position: relative; z-index: 2; }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 100px;
+            padding: 8px 18px;
+            margin-bottom: 28px;
+            font-family: 'Archivo', var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-light);
+        }
+        .hero-tag .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+        .hero-aurora h1 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            color: #FFF;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+        .hero-aurora h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-aurora .hero-desc {
+            font-size: 1.15rem;
+            color: #94A3B8;
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-aurora .btn-primary {
+            background: var(--primary);
+            box-shadow: 0 0 30px rgba(99,102,241,0.3);
+        }
+        .hero-aurora .btn-outline {
+            border-color: rgba(255,255,255,0.15);
+            color: #FFF;
+        }
+        .hero-aurora .btn-outline:hover {
+            border-color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.05);
+            color: #FFF;
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .scroll-hint span {
+            font-family: 'Archivo', var(--font-heading);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #475569;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 36px;
+            background: #1E293B;
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 50%;
+            background: var(--primary-light);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse { 0% { top: -50%; } 100% { top: 100%; } }
+
+        /* ===== BENTO GRID ===== */
+        .bento-section {
+            background: #FAFAFA;
+            padding: 120px 5%;
+        }
+        .bento-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .bento-header .tag {
+            margin-bottom: 16px;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .bento-card {
+            background: #FFF;
+            border: 1px solid #E8ECF1;
+            border-radius: 20px;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+        .bento-card.span-8 { grid-column: span 8; }
+        .bento-card.span-4 { grid-column: span 4; }
+        .bento-card.span-6 { grid-column: span 6; }
+        .bento-card.span-12 { grid-column: span 12; }
+
+        /* Dark bento card */
+        .bento-card.dark {
+            background: #0B0F1A;
+            border-color: rgba(255,255,255,0.06);
+        }
+        .bento-card.dark h3 { color: #FFF; }
+        .bento-card.dark p { color: #94A3B8; }
+
+        /* Primary accent bento */
+        .bento-card.accent {
+            background: var(--primary);
+            border-color: transparent;
+        }
+        .bento-card.accent h3,
+        .bento-card.accent p { color: #FFF; }
+        .bento-card.accent p { opacity: 0.85; }
+
+        .bento-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+        .bento-icon svg {
+            width: 24px; height: 24px;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+        .bento-icon.indigo { background: rgba(99,102,241,0.1); }
+        .bento-icon.indigo svg { stroke: var(--primary); }
+        .bento-icon.green { background: rgba(34,197,94,0.1); }
+        .bento-icon.green svg { stroke: var(--accent); }
+        .bento-icon.white { background: rgba(255,255,255,0.12); }
+        .bento-icon.white svg { stroke: #FFF; }
+
+        .bento-card h3 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .bento-card p {
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+        .bento-card .bento-link {
+            margin-top: auto;
+            padding-top: 16px;
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+        .bento-card:hover .bento-link { gap: 10px; }
+        .bento-card.dark .bento-link,
+        .bento-card.accent .bento-link { color: #FFF; }
+        .bento-link svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+        }
+
+        /* Bento card feature list */
+        .bento-list { margin-top: 16px; }
+        .bento-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .bento-card.dark .bento-list li { color: #CBD5E1; }
+        .bento-list li svg {
+            width: 14px; height: 14px;
+            stroke: var(--accent); fill: none;
+            stroke-width: 2.5; flex-shrink: 0;
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products-section {
+            background: #06060A;
+            padding: 120px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        .products-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 44px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s var(--ease), border-color 0.3s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+        }
+        .product-card img {
+            width: 64px; height: 64px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .product-card h3 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #FFF;
+            margin-bottom: 10px;
+        }
+        .product-card p {
+            font-size: 0.95rem;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .product-card ul { margin-bottom: 28px; }
+        .product-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 0;
+            font-size: 0.9rem;
+            color: #94A3B8;
+        }
+        .product-card ul li svg {
+            width: 14px; height: 14px;
+            stroke: var(--accent); fill: none;
+            stroke-width: 2.5; flex-shrink: 0;
+        }
+        .product-card .btn { margin-top: auto; }
+
+        /* ===== PROCESS ===== */
+        .process-section { padding: 120px 5%; background: #FAFAFA; }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #E8ECF1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .process-card {
+            background: #FFF;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s ease;
+        }
+        .process-card:hover { background: #F8FAFC; }
+        .process-num {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: 3rem;
+            color: rgba(99,102,241,0.1);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .process-card h4 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .process-card p { font-size: 0.88rem; }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            padding: 80px 5%;
+            background: #FFF;
+            border-top: 1px solid #E8ECF1;
+            border-bottom: 1px solid #E8ECF1;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-lbl {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ===== CTA ===== */
+        .final-cta {
+            padding: 120px 5%;
+            background: #FAFAFA;
+        }
+        .cta-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #06060A;
+            border-radius: 28px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .cta-box h2 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #FFF;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 16px;
+        }
+        .cta-box p {
+            color: #94A3B8;
+            max-width: 500px;
+            margin: 0 auto 36px;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-box .btn { position: relative; z-index: 2; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.span-8,
+            .bento-card.span-4,
+            .bento-card.span-6,
+            .bento-card.span-12 { grid-column: span 1; }
+            .product-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+            .cta-box { padding: 60px 28px; }
+        }
+        @media (max-width: 480px) {
+            .process-grid { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-aurora::before, .hero-aurora::after { animation: none; }
+            .scroll-line::after { animation: none; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar" role="navigation" aria-label="Menu principal">
-        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
-        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+    <nav class="navbar" role="navigation" aria-label="Menu principal" style="background: rgba(6,6,10,0.7); border-color: rgba(255,255,255,0.06);">
+        <a href="index.html" class="logo" style="color: #FFF;">SOLAYIA<span>.</span></a>
+        <div class="burger" aria-label="Menu"><div class="line1" style="background:#FFF;"></div><div class="line2" style="background:#FFF;"></div><div class="line3" style="background:#FFF;"></div></div>
         <ul class="nav-links">
-            <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
+            <li><a href="index.html" class="active" aria-current="page" style="color: #FFF;">Accueil</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="realisations.html">Réalisations</a></li>
             <li><a href="contact.html" class="btn btn-primary">Nous contacter</a></li>
@@ -25,128 +510,121 @@
     </nav>
 
     <main>
-        <!-- HERO -->
-        <section style="min-height: 90vh; display: flex; align-items: center; padding-top: 100px;">
+        <!-- ===== HERO AURORA ===== -->
+        <section class="hero-aurora">
             <div class="container">
-                <div style="max-width: 800px;">
+                <div class="hero-tag reveal">
+                    <span class="dot"></span>
+                    Agence de Transformation Digitale
+                </div>
+                <h1 class="reveal">Le digital au<br>service de <span class="gradient-text">votre<br>croissance.</span></h1>
+                <p class="hero-desc reveal">
+                    Solayia conçoit des écosystèmes numériques performants. De la création de votre site web à l'automatisation de vos métiers par l'IA, nous bâtissons les outils de votre réussite.
+                </p>
+                <div class="hero-buttons reveal">
+                    <a href="contact.html" class="btn btn-primary">
+                        Démarrer un projet
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="realisations.html" class="btn btn-outline">Nos réalisations</a>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ===== BENTO GRID : NOS POLES ===== -->
+        <section class="bento-section">
+            <div class="container">
+                <div class="bento-header">
                     <span class="tag reveal">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        Agence de Transformation Digitale
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        Nos Pôles
                     </span>
-                    <h1 class="reveal">Le digital au service <br>de <span class="accent-text">votre croissance.</span></h1>
-                    <p class="lead reveal" style="margin-bottom: 2.5rem;">
-                        Solayia conçoit des écosystèmes numériques performants. De la création de votre site web à l'automatisation de vos métiers par l'IA, nous bâtissons les outils de votre réussite.
-                    </p>
-                    <div class="reveal" style="display: flex; gap: 14px; flex-wrap: wrap;">
-                        <a href="contact.html" class="btn btn-primary">
-                            Démarrer un projet
-                            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                        <a href="services.html" class="btn btn-outline">Nos expertises</a>
+                    <h2 class="reveal" style="font-family: 'Archivo', var(--font-heading); font-weight: 900;">Plus qu'une agence web,<br>un partenaire <span class="accent-text">stratégique.</span></h2>
+                    <p class="reveal" style="margin: 0 auto; max-width: 600px;">Nous avons une double culture : la sensibilité artistique du Design Studio et la puissance technique de l'Ingénierie Logicielle.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Présence Digitale — Large -->
+                    <div class="bento-card span-8 reveal">
+                        <div>
+                            <div class="bento-icon indigo">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            </div>
+                            <h3>Présence Digitale</h3>
+                            <p>Sites vitrines performants, E-commerce et stratégies SEO pour dominer votre marché local.</p>
+                            <ul class="bento-list">
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Site Web Responsive</li>
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Fiche Google Business</li>
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Réseaux Sociaux</li>
+                            </ul>
+                        </div>
+                        <a href="services.html" class="bento-link">En savoir plus <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <!-- Design Studio — Small -->
+                    <div class="bento-card span-4 accent reveal">
+                        <div>
+                            <div class="bento-icon white">
+                                <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                            </div>
+                            <h3>Design Studio</h3>
+                            <p>Branding, identité visuelle, supports print, vidéo & photo 4K par drone.</p>
+                        </div>
+                        <a href="services.html" class="bento-link">Voir le portfolio <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <!-- Logiciels & IA — Small Dark -->
+                    <div class="bento-card span-4 dark reveal">
+                        <div>
+                            <div class="bento-icon white">
+                                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                            </div>
+                            <h3>Logiciels & IA</h3>
+                            <p>Solutions sur-mesure ou SaaS pour automatiser vos processus.</p>
+                            <ul class="bento-list">
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Logiciels Métiers</li>
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Automatisation</li>
+                                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Intégration IA (GPT-4)</li>
+                            </ul>
+                        </div>
+                        <a href="realisations.html" class="bento-link">Voir nos logiciels <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <!-- Approche 360 — Large -->
+                    <div class="bento-card span-8 reveal" style="border-color: var(--primary); background: linear-gradient(135deg, #FFF 0%, rgba(99,102,241,0.03) 100%);">
+                        <div>
+                            <div class="bento-icon green">
+                                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                            </div>
+                            <h3>Approche 360° — Du concept au résultat</h3>
+                            <p>Le digital a changé. Il ne s'agit plus seulement d'être présent, mais d'être performant, connecté et automatisé. Chez Solayia, chaque projet est traité de bout en bout : stratégie, design, développement et suivi.</p>
+                        </div>
+                        <a href="services.html" class="bento-link">Découvrir nos services <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- POSITIONNEMENT -->
-        <section style="background: var(--bg-alt);">
-            <div class="container text-center">
-                <div class="reveal" style="max-width: 750px; margin: 0 auto;">
-                    <h2>Plus qu'une agence web, <br>un <span class="accent-text">partenaire stratégique.</span></h2>
-                    <p class="lead" style="margin: 1.5rem auto;">
-                        Le digital a changé. Il ne s'agit plus seulement d'être présent, mais d'être performant, connecté et automatisé.
-                    </p>
-                    <p style="margin: 0 auto;">
-                        Chez Solayia, nous avons une double culture : la sensibilité artistique du <strong>Design Studio</strong> et la puissance technique de l'<strong>Ingénierie Logicielle</strong>. C'est cette alliance qui nous permet de créer des outils qui transforment réellement votre quotidien.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- POLES -->
-        <section>
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 60px;">
-                    <span class="tag reveal">
-                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        Nos Pôles
-                    </span>
-                    <h2 class="reveal">Une approche 360°</h2>
-                    <p class="reveal" style="margin: 0 auto;">Nous intervenons sur toute la chaîne de valeur numérique.</p>
-                </div>
-
-                <div class="grid-3">
-                    <article class="card reveal">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                        <h3>Présence Digitale</h3>
-                        <p style="margin-bottom: 20px;">Sites vitrines performants, E-commerce et stratégies SEO pour dominer votre marché local.</p>
-                        <ul>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Site Web Responsive</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Fiche Google Business</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Réseaux Sociaux</li>
-                        </ul>
-                        <a href="services.html" class="card-link">
-                            En savoir plus
-                            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </article>
-
-                    <article class="card card-featured reveal">
-                        <div class="card-icon" style="background: rgba(99,102,241,0.12);">
-                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-                        </div>
-                        <h3>Logiciels & IA</h3>
-                        <p style="margin-bottom: 20px;">Des solutions sur-mesure ou prêtes à l'emploi (SaaS) pour automatiser vos processus.</p>
-                        <ul>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Logiciels Métiers</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Automatisation (Zapier/n8n)</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Intégration IA (GPT-4)</li>
-                        </ul>
-                        <a href="realisations.html" class="card-link">
-                            Voir nos logiciels
-                            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </article>
-
-                    <article class="card reveal">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-                        </div>
-                        <h3>Design Studio</h3>
-                        <p style="margin-bottom: 20px;">Une identité forte pour marquer les esprits. Du logo à la vidéo promotionnelle par drone.</p>
-                        <ul>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Branding & Charte</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Supports Print</li>
-                            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Vidéo & Photo 4K</li>
-                        </ul>
-                        <a href="services.html" class="card-link">
-                            Voir le portfolio
-                            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRODUITS -->
-        <section class="dark-section">
-            <div class="container">
-                <div class="reveal text-center" style="max-width: 700px; margin: 0 auto 60px;">
-                    <span class="tag">
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <!-- ===== PRODUCTS ===== -->
+        <section class="products-section">
+            <div class="container" style="max-width: 1200px;">
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <span class="tag reveal" style="background: rgba(255,255,255,0.06); color: #FFF; border-color: rgba(255,255,255,0.1);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                         Éditeur de solutions
                     </span>
-                    <h2 style="font-size: clamp(2.2rem, 4vw, 3rem);">L'innovation concrète.</h2>
-                    <p class="lead" style="margin: 0 auto;">Au-delà du service, nous développons des produits technologiques pour résoudre vos problèmes quotidiens.</p>
+                    <h2 class="reveal" style="font-family: 'Archivo', var(--font-heading); font-weight: 900; color: #FFF;">L'innovation concrète.</h2>
+                    <p class="reveal" style="color: #94A3B8; margin: 0 auto; max-width: 550px;">Au-delà du service, nous développons des produits technologiques pour résoudre vos problèmes quotidiens.</p>
                 </div>
-
-                <div class="grid-2 reveal">
-                    <div class="product-box">
-                        <img src="assets/logo-autobat.jpg" alt="Logo Autobat AI" class="product-logo">
-                        <h3 style="font-size: 1.6rem;">Autobat AI</h3>
-                        <p style="margin-bottom: 20px;">Le logiciel BTP nouvelle génération. Devis générés par IA, facturation et planning intelligent.</p>
+                <div class="product-grid">
+                    <div class="product-card reveal">
+                        <img src="assets/logo-autobat.jpg" alt="Logo Autobat AI">
+                        <h3>Autobat AI</h3>
+                        <p>Le logiciel BTP nouvelle génération. Devis générés par IA, facturation et planning intelligent.</p>
                         <ul>
                             <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Chiffrage prédictif</li>
                             <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestion de chantiers</li>
@@ -154,11 +632,10 @@
                         </ul>
                         <a href="https://autobat.pro/" target="_blank" rel="noopener noreferrer" class="btn btn-white btn-full">Découvrir Autobat</a>
                     </div>
-
-                    <div class="product-box" style="border-top: 3px solid var(--amber);">
-                        <img src="assets/logo-avis.jpg" alt="Logo Mon Avis Parfait" class="product-logo">
-                        <h3 style="font-size: 1.6rem;">Mon Avis Parfait</h3>
-                        <p style="margin-bottom: 20px;">Pilotez votre E-réputation. Collecte d'avis automatisée et réponses rédigées par IA.</p>
+                    <div class="product-card reveal" style="border-top: 2px solid var(--amber);">
+                        <img src="assets/logo-avis.jpg" alt="Logo Mon Avis Parfait">
+                        <h3>Mon Avis Parfait</h3>
+                        <p>Pilotez votre E-réputation. Collecte d'avis automatisée et réponses rédigées par IA.</p>
                         <ul>
                             <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Campagnes SMS & QR Code</li>
                             <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Réponses IA automatiques</li>
@@ -170,69 +647,69 @@
             </div>
         </section>
 
-        <!-- METHODOLOGIE -->
-        <section>
-            <div class="container grid-2" style="align-items: start;">
-                <div class="reveal">
-                    <span class="tag">
-                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        <!-- ===== PROCESS ===== -->
+        <section class="process-section">
+            <div class="container" style="max-width: 1200px;">
+                <div style="text-align: center; margin-bottom: 0;">
+                    <span class="tag reveal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                         Méthode
                     </span>
-                    <h2>Notre méthodologie.</h2>
-                    <p>La transparence est la clé. Nous avançons étape par étape, de l'audit initial à la mise en production.</p>
+                    <h2 class="reveal" style="font-family: 'Archivo', var(--font-heading); font-weight: 900;">Notre méthodologie.</h2>
+                    <p class="reveal" style="margin: 0 auto;">La transparence est la clé. Nous avançons étape par étape.</p>
                 </div>
-                <div class="reveal">
-                    <div class="process-step">
-                        <h3>1. Audit & Stratégie</h3>
+                <div class="process-grid reveal">
+                    <div class="process-card">
+                        <div class="process-num">01</div>
+                        <h4>Audit & Stratégie</h4>
                         <p>Nous analysons votre existant et définissons les objectifs de croissance.</p>
                     </div>
-                    <div class="process-step">
-                        <h3>2. Design & Conception</h3>
-                        <p>Création des maquettes (UI/UX) et validation visuelle avant tout développement.</p>
+                    <div class="process-card">
+                        <div class="process-num">02</div>
+                        <h4>Design & Conception</h4>
+                        <p>Création des maquettes UI/UX et validation visuelle.</p>
                     </div>
-                    <div class="process-step">
-                        <h3>3. Développement & Tech</h3>
-                        <p>Nos ingénieurs codent votre solution avec les dernières technologies (React, Node, IA).</p>
+                    <div class="process-card">
+                        <div class="process-num">03</div>
+                        <h4>Développement</h4>
+                        <p>Nos ingénieurs codent avec les dernières technologies.</p>
                     </div>
-                    <div class="process-step">
-                        <h3>4. Lancement & Suivi</h3>
-                        <p>Mise en ligne, formation et maintenance évolutive pour garantir la pérennité.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- STATS -->
-        <section style="background: var(--bg-alt);">
-            <div class="container">
-                <div class="grid-3 text-center">
-                    <div class="reveal">
-                        <div class="stat-number" data-count="40" data-suffix="%">0</div>
-                        <div class="stat-label">de productivité gagnée</div>
-                    </div>
-                    <div class="reveal">
-                        <div class="stat-number" data-count="150" data-prefix="+">0</div>
-                        <div class="stat-label">Projets déployés</div>
-                    </div>
-                    <div class="reveal">
-                        <div class="stat-number" data-count="24/7">24/7</div>
-                        <div class="stat-label">Support dédié</div>
+                    <div class="process-card">
+                        <div class="process-num">04</div>
+                        <h4>Lancement & Suivi</h4>
+                        <p>Mise en ligne, formation et maintenance évolutive.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section>
-            <div class="container">
-                <div class="cta-block reveal">
-                    <h2>Prêt à digitaliser votre activité ?</h2>
-                    <p>Discutons de vos besoins autour d'un café ou en visio. Le premier audit est offert.</p>
-                    <a href="contact.html" class="btn btn-white">
-                        Prendre rendez-vous
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </a>
+        <!-- ===== STATS ===== -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="reveal">
+                    <div class="stat-num" data-count="40" data-suffix="%">0</div>
+                    <div class="stat-lbl">de productivité gagnée</div>
                 </div>
+                <div class="reveal">
+                    <div class="stat-num" data-count="150" data-prefix="+">0</div>
+                    <div class="stat-lbl">Projets déployés</div>
+                </div>
+                <div class="reveal">
+                    <div class="stat-num" data-count="24/7">24/7</div>
+                    <div class="stat-lbl">Support dédié</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section class="final-cta">
+            <div class="cta-box reveal">
+                <h2>Prêt à digitaliser<br>votre activité ?</h2>
+                <p>Discutons de vos besoins autour d'un café ou en visio. Le premier audit est offert.</p>
+                <a href="contact.html" class="btn btn-primary" style="box-shadow: 0 0 30px rgba(99,102,241,0.3);">
+                    Prendre rendez-vous
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
             </div>
         </section>
     </main>
@@ -261,9 +738,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 Solayia. Tous droits réservés.
-            </div>
+            <div class="footer-bottom">&copy; 2026 Solayia. Tous droits réservés.</div>
         </div>
     </footer>
 
@@ -278,5 +753,24 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Dark navbar transition on scroll
+        const nav = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > window.innerHeight - 100) {
+                nav.style.background = 'rgba(255,255,255,0.9)';
+                nav.style.borderColor = 'rgba(0,0,0,0.06)';
+                nav.querySelector('.logo').style.color = '';
+                nav.querySelectorAll('.burger div').forEach(d => d.style.background = '');
+                nav.querySelector('.active').style.color = '';
+            } else {
+                nav.style.background = 'rgba(6,6,10,0.7)';
+                nav.style.borderColor = 'rgba(255,255,255,0.06)';
+                nav.querySelector('.logo').style.color = '#FFF';
+                nav.querySelectorAll('.burger div').forEach(d => d.style.background = '#FFF');
+                nav.querySelector('.active').style.color = '#FFF';
+            }
+        }, { passive: true });
+    </script>
 </body>
 </html>
