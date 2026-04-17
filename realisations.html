@@ -7,178 +7,326 @@
     <meta name="description" content="Découvrez les projets réalisés par Solayia : sites web, applications, e-commerce et logiciels pour nos clients.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* PORTFOLIO GRID */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-        .portfolio-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: transform 0.4s var(--ease), box-shadow 0.4s ease, border-color 0.3s ease;
-            cursor: pointer;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary);
-        }
+        /* ===== MOTION-DRIVEN PORTFOLIO ===== */
 
-        /* Browser Preview */
-        .portfolio-preview {
+        .port-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            background: var(--bg-dark);
             position: relative;
-            background: var(--bg-alt);
             overflow: hidden;
-            aspect-ratio: 16/10;
         }
-        .browser-bar {
+        .port-hero::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #F1F5F9;
-            border-bottom: 1px solid var(--border);
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 2;
-        }
-        .browser-dots {
-            display: flex;
-            gap: 6px;
-        }
-        .browser-dots span {
-            width: 10px;
-            height: 10px;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
             border-radius: 50%;
-            background: #E2E8F0;
         }
-        .browser-dots span:first-child { background: #FCA5A5; }
-        .browser-dots span:nth-child(2) { background: #FDE68A; }
-        .browser-dots span:last-child { background: #86EFAC; }
-        .browser-url {
-            flex: 1;
-            background: #FFF;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-family: var(--font-body);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .portfolio-screenshot {
+        .port-hero::after {
+            content: '';
             position: absolute;
-            top: 40px;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 40px);
-            object-fit: cover;
-            object-position: top center;
+            bottom: -20%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .port-hero .container { position: relative; z-index: 2; }
+        .port-hero h1 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: #FFF;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+        }
+        .port-hero h1 .outline-text {
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.4);
+            color: transparent;
+        }
+        .port-hero p {
+            color: #94A3B8;
+            font-size: 1.15rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .port-count {
+            display: flex;
+            gap: 48px;
+            margin-top: 40px;
+        }
+        .port-count-item {}
+        .port-count-num {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            line-height: 1;
+        }
+        .port-count-label {
+            font-size: 0.85rem;
+            color: #64748B;
+            margin-top: 4px;
         }
 
-        /* Card Info */
-        .portfolio-info {
-            padding: 28px 32px;
-        }
-        .portfolio-tags {
+        /* Filters */
+        .port-filters {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 14px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+            position: sticky;
+            top: 72px;
+            z-index: 50;
+            background: var(--bg-body);
         }
-        .portfolio-tag {
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            font-weight: 600;
+        .filter-btn {
+            font-family: 'Archivo', var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: var(--radius-full);
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s var(--ease);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .filter-btn:hover { color: var(--text-main); background: var(--bg-alt); }
+        .filter-btn.active {
+            background: var(--text-main);
+            color: white;
+        }
+
+        /* ===== MASONRY GRID ===== */
+        .port-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        /* Card sizes */
+        .port-item.large { grid-column: span 8; }
+        .port-item.small { grid-column: span 4; }
+        .port-item.medium { grid-column: span 6; }
+
+        /* Card */
+        .port-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #18181B;
+        }
+        .port-item a {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Screenshot image */
+        .port-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.6s var(--ease), filter 0.4s ease;
+            filter: brightness(0.9);
+        }
+        .port-item:hover .port-img {
+            transform: scale(1.04);
+            filter: brightness(0.5);
+        }
+        .port-item.large .port-img { aspect-ratio: 21/10; }
+        .port-item.small .port-img { aspect-ratio: 4/5; }
+
+        /* Overlay info — appears on hover */
+        .port-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .port-item:hover .port-overlay { opacity: 1; }
+
+        .port-overlay .port-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .port-tag {
+            font-family: 'Archivo', var(--font-heading);
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: rgba(99, 102, 241, 0.08);
-            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            color: #FFF;
         }
-        .portfolio-tag.green { background: rgba(34,197,94,0.08); color: var(--accent-dark); }
-        .portfolio-tag.amber { background: rgba(245,158,11,0.08); color: #B45309; }
-        .portfolio-tag.red { background: rgba(239,68,68,0.08); color: #DC2626; }
-        .portfolio-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
+        .port-overlay h3 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #FFF;
+            margin-bottom: 6px;
+            transform: translateY(12px);
+            transition: transform 0.4s var(--ease);
         }
-        .portfolio-info p {
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-            line-height: 1.6;
+        .port-item:hover .port-overlay h3 { transform: translateY(0); }
+
+        .port-overlay p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 400px;
+            line-height: 1.5;
+            transform: translateY(12px);
+            transition: transform 0.4s var(--ease) 0.05s;
         }
-        .portfolio-link {
+        .port-item:hover .port-overlay p { transform: translateY(0); }
+
+        .port-view-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
-            transition: gap 0.2s ease;
+            margin-top: 16px;
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #FFF;
+            background: var(--primary);
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            width: fit-content;
+            transform: translateY(12px);
+            transition: transform 0.4s var(--ease) 0.1s, background 0.2s ease;
         }
-        .portfolio-card:hover .portfolio-link { gap: 12px; }
-        .portfolio-link svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--primary);
+        .port-item:hover .port-view-btn { transform: translateY(0); }
+        .port-view-btn:hover { background: var(--primary-dark); }
+        .port-view-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
             fill: none;
-            stroke-width: 2;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        /* Featured (first card bigger) */
-        .portfolio-card.featured {
-            grid-column: 1 / -1;
-        }
-        .portfolio-card.featured .portfolio-preview {
-            aspect-ratio: 21/9;
+        /* ===== Number badge ===== */
+        .port-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 3;
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 900;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* Filters */
-        .portfolio-filters {
+        /* ===== Autobat special card ===== */
+        .port-item.autobat-card {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 32px;
+            align-items: center;
+            justify-content: center;
         }
-        .filter-btn {
-            font-family: var(--font-heading);
+        .autobat-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.4s var(--ease);
+        }
+        .port-item.autobat-card:hover .autobat-inner { transform: scale(1.03); }
+        .autobat-inner img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        .autobat-inner h3 {
+            font-family: 'Archivo', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+        .autobat-inner p {
             font-size: 0.85rem;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+            color: #94A3B8;
+            max-width: 200px;
         }
 
+        /* ===== SCROLL REVEAL for items ===== */
+        .port-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .port-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .port-item:nth-child(2) { transition-delay: 0.1s; }
+        .port-item:nth-child(3) { transition-delay: 0.15s; }
+        .port-item:nth-child(4) { transition-delay: 0.1s; }
+        .port-item:nth-child(5) { transition-delay: 0.15s; }
+        .port-item:nth-child(6) { transition-delay: 0.2s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .port-item { opacity: 1; transform: none; transition: none; }
+            .port-img { transition: none; }
+            .port-overlay, .port-overlay h3, .port-overlay p, .port-view-btn { transition: none; }
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-card.featured { grid-column: auto; }
-            .portfolio-card.featured .portfolio-preview { aspect-ratio: 16/10; }
+            .port-grid { grid-template-columns: 1fr; }
+            .port-item.large,
+            .port-item.small,
+            .port-item.medium { grid-column: span 1; }
+            .port-item.small .port-img { aspect-ratio: 16/10; }
+            .port-hero h1 { font-size: 2.8rem; }
+            .port-count { gap: 32px; }
+            .port-count-num { font-size: 2rem; }
+            .port-overlay { opacity: 1; }
+            .port-overlay h3,
+            .port-overlay p,
+            .port-view-btn { transform: translateY(0); }
+            .port-img { filter: brightness(0.55); }
+            .port-filters { position: static; }
         }
     </style>
 </head>
@@ -196,178 +344,164 @@
     </nav>
 
     <main>
-        <!-- HEADER -->
-        <section style="min-height: 45vh; display: flex; align-items: center; padding-top: 100px; background: var(--bg-alt);">
+        <!-- HERO -->
+        <section class="port-hero">
             <div class="container">
-                <div style="max-width: 750px;">
-                    <span class="tag reveal">
-                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                        Portfolio
-                    </span>
-                    <h1 class="reveal">Nos <span class="accent-text">réalisations.</span></h1>
-                    <p class="lead reveal">Chaque projet est une preuve de notre savoir-faire. Découvrez ce que nous avons construit pour nos clients.</p>
-                </div>
-
-                <!-- FILTERS -->
-                <div class="portfolio-filters reveal">
-                    <button class="filter-btn active" data-filter="all">Tout</button>
-                    <button class="filter-btn" data-filter="site-vitrine">Site Vitrine</button>
-                    <button class="filter-btn" data-filter="e-commerce">E-commerce</button>
-                    <button class="filter-btn" data-filter="logiciel">Logiciel</button>
-                    <button class="filter-btn" data-filter="immobilier">Immobilier</button>
+                <div class="reveal">
+                    <h1>Nos<br>réalisations<span class="outline-text">.</span></h1>
+                    <p>Chaque projet est une preuve de notre savoir-faire. Du site vitrine au logiciel IA, nous construisons des expériences digitales qui performent.</p>
+                    <div class="port-count">
+                        <div class="port-count-item">
+                            <div class="port-count-num" data-count="6" data-prefix="+">0</div>
+                            <div class="port-count-label">Projets livrés</div>
+                        </div>
+                        <div class="port-count-item">
+                            <div class="port-count-num" data-count="5">0</div>
+                            <div class="port-count-label">Secteurs couverts</div>
+                        </div>
+                        <div class="port-count-item">
+                            <div class="port-count-num" data-count="100" data-suffix="%">0</div>
+                            <div class="port-count-label">Clients satisfaits</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PORTFOLIO -->
-        <section>
+        <!-- FILTERS + GRID -->
+        <section style="padding-top: 0;">
             <div class="container">
-                <div class="portfolio-grid">
+                <div class="port-filters">
+                    <button class="filter-btn active" data-filter="all">Tout</button>
+                    <button class="filter-btn" data-filter="site-vitrine">Sites Vitrines</button>
+                    <button class="filter-btn" data-filter="e-commerce">E-commerce</button>
+                    <button class="filter-btn" data-filter="logiciel">Logiciel</button>
+                    <button class="filter-btn" data-filter="immobilier">Immobilier</button>
+                </div>
 
-                    <!-- INSTALLE TA CLIM — Featured -->
-                    <article class="portfolio-card featured reveal" data-category="site-vitrine">
-                        <div class="portfolio-preview">
-                            <div class="browser-bar">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url">solayia.github.io/installe-ta-clim/</div>
-                            </div>
-                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/installe-ta-clim/" alt="Aperçu Installe ta Clim" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Site Vitrine</span>
-                                <span class="portfolio-tag green">SEO Local</span>
-                                <span class="portfolio-tag amber">Génération de Leads</span>
-                            </div>
-                            <h3>Installe ta Clim</h3>
-                            <p>Site vitrine pour un installateur de climatisation. Design moderne, formulaire de devis intégré et optimisation SEO locale pour capter les clients de la zone.</p>
-                            <a href="https://solayia.github.io/installe-ta-clim/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le site
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                <div class="port-grid">
 
-                    <!-- PHIL-ELEC82 -->
-                    <article class="portfolio-card reveal" data-category="site-vitrine">
-                        <div class="portfolio-preview">
-                            <div class="browser-bar">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url">solayia.github.io/phil-elec82/</div>
+                    <!-- 01 — INSTALLE TA CLIM (Large) -->
+                    <div class="port-item large" data-category="site-vitrine">
+                        <a href="https://solayia.github.io/installe-ta-clim/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number">01</span>
+                            <img class="port-img" src="https://image.thum.io/get/width/1400/crop/700/https://solayia.github.io/installe-ta-clim/" alt="Installe ta Clim" loading="eager">
+                            <div class="port-overlay">
+                                <div class="port-tags">
+                                    <span class="port-tag">Site Vitrine</span>
+                                    <span class="port-tag">SEO Local</span>
+                                    <span class="port-tag">Leads</span>
+                                </div>
+                                <h3>Installe ta Clim</h3>
+                                <p>Site vitrine pour un installateur de climatisation. Formulaire de devis intégré et SEO locale.</p>
+                                <span class="port-view-btn">
+                                    Voir le projet
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/phil-elec82/" alt="Aperçu Phil-Elec82" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Site Vitrine</span>
-                                <span class="portfolio-tag green">Artisan</span>
-                            </div>
-                            <h3>Phil-Elec82</h3>
-                            <p>Landing page professionnelle pour un électricien-plombier. Mise en avant des services, zone d'intervention et prise de contact rapide.</p>
-                            <a href="https://solayia.github.io/phil-elec82/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le site
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                        </a>
+                    </div>
 
-                    <!-- COACH ELITE -->
-                    <article class="portfolio-card reveal" data-category="site-vitrine">
-                        <div class="portfolio-preview">
-                            <div class="browser-bar">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url">solayia.github.io/coach-elite/</div>
+                    <!-- 02 — COACH ELITE (Small) -->
+                    <div class="port-item small" data-category="site-vitrine">
+                        <a href="https://solayia.github.io/coach-elite/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number">02</span>
+                            <img class="port-img" src="https://image.thum.io/get/width/800/crop/1000/https://solayia.github.io/coach-elite/" alt="Coach Elite" loading="lazy">
+                            <div class="port-overlay">
+                                <div class="port-tags">
+                                    <span class="port-tag">Dark Theme</span>
+                                    <span class="port-tag">Animations</span>
+                                </div>
+                                <h3>Coach Elite</h3>
+                                <p>Landing page premium pour coach sportif haute performance.</p>
+                                <span class="port-view-btn">
+                                    Voir le projet
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/coach-elite/" alt="Aperçu Coach Elite" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Site Vitrine</span>
-                                <span class="portfolio-tag red">Dark Theme</span>
-                                <span class="portfolio-tag amber">Animations</span>
-                            </div>
-                            <h3>Coach Elite</h3>
-                            <p>Landing page premium pour un coach sportif haute performance. Thème sombre, animations au scroll, compteurs animés et design agressif.</p>
-                            <a href="https://solayia.github.io/coach-elite/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le site
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                        </a>
+                    </div>
 
-                    <!-- SNEAKERS SHOP -->
-                    <article class="portfolio-card reveal" data-category="e-commerce">
-                        <div class="portfolio-preview">
-                            <div class="browser-bar">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url">solayia.github.io/sneakers-shop/</div>
+                    <!-- 03 — PHIL-ELEC82 (Medium) -->
+                    <div class="port-item medium" data-category="site-vitrine">
+                        <a href="https://solayia.github.io/phil-elec82/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number">03</span>
+                            <img class="port-img" src="https://image.thum.io/get/width/1200/crop/750/https://solayia.github.io/phil-elec82/" alt="Phil-Elec82" loading="lazy">
+                            <div class="port-overlay">
+                                <div class="port-tags">
+                                    <span class="port-tag">Site Vitrine</span>
+                                    <span class="port-tag">Artisan</span>
+                                </div>
+                                <h3>Phil-Elec82</h3>
+                                <p>Landing page pour un électricien-plombier. Services, zone d'intervention et prise de contact.</p>
+                                <span class="port-view-btn">
+                                    Voir le projet
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/sneakers-shop/" alt="Aperçu Sneakers Shop" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">E-commerce</span>
-                                <span class="portfolio-tag green">Panier</span>
-                            </div>
-                            <h3>Sneakers Shop</h3>
-                            <p>Boutique e-commerce de sneakers. Catalogue produits, système de panier, filtres par catégorie et design tendance.</p>
-                            <a href="https://solayia.github.io/sneakers-shop/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le site
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                        </a>
+                    </div>
 
-                    <!-- IMMO-AM -->
-                    <article class="portfolio-card reveal" data-category="immobilier">
-                        <div class="portfolio-preview">
-                            <div class="browser-bar">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url">solayia.github.io/immo-am/</div>
+                    <!-- 04 — SNEAKERS SHOP (Medium) -->
+                    <div class="port-item medium" data-category="e-commerce">
+                        <a href="https://solayia.github.io/sneakers-shop/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number">04</span>
+                            <img class="port-img" src="https://image.thum.io/get/width/1200/crop/750/https://solayia.github.io/sneakers-shop/" alt="Sneakers Shop" loading="lazy">
+                            <div class="port-overlay">
+                                <div class="port-tags">
+                                    <span class="port-tag">E-commerce</span>
+                                    <span class="port-tag">Panier</span>
+                                </div>
+                                <h3>Sneakers Shop</h3>
+                                <p>Boutique e-commerce de sneakers. Catalogue, panier et filtres par catégorie.</p>
+                                <span class="port-view-btn">
+                                    Voir le projet
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                            <img class="portfolio-screenshot" src="https://image.thum.io/get/width/1280/crop/800/https://solayia.github.io/immo-am/" alt="Aperçu Immo AM" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Immobilier</span>
-                                <span class="portfolio-tag green">Annonces</span>
-                            </div>
-                            <h3>Immo AM</h3>
-                            <p>Site pour une agence immobilière à Toulouse. Catalogue de biens, recherche avancée et prise de rendez-vous en ligne.</p>
-                            <a href="https://solayia.github.io/immo-am/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le site
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                        </a>
+                    </div>
 
-                    <!-- AUTOBAT -->
-                    <article class="portfolio-card reveal" data-category="logiciel">
-                        <div class="portfolio-preview" style="background: var(--bg-dark); display: flex; align-items: center; justify-content: center;">
-                            <div class="browser-bar" style="background: #1E293B; border-color: rgba(255,255,255,0.08);">
-                                <div class="browser-dots"><span></span><span></span><span></span></div>
-                                <div class="browser-url" style="background: rgba(255,255,255,0.08); color: #94A3B8; border-color: rgba(255,255,255,0.06);">autobat.pro</div>
+                    <!-- 05 — IMMO-AM (Large) -->
+                    <div class="port-item large" data-category="immobilier">
+                        <a href="https://solayia.github.io/immo-am/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number">05</span>
+                            <img class="port-img" src="https://image.thum.io/get/width/1400/crop/700/https://solayia.github.io/immo-am/" alt="Immo AM" loading="lazy">
+                            <div class="port-overlay">
+                                <div class="port-tags">
+                                    <span class="port-tag">Immobilier</span>
+                                    <span class="port-tag">Annonces</span>
+                                </div>
+                                <h3>Immo AM</h3>
+                                <p>Agence immobilière à Toulouse. Catalogue de biens, recherche avancée et prise de rendez-vous.</p>
+                                <span class="port-view-btn">
+                                    Voir le projet
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                            <div style="padding-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-                                <img src="assets/logo-autobat.jpg" alt="Autobat AI" style="width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: white;">Autobat AI</span>
-                                <span style="font-size: 0.85rem; color: #94A3B8;">Logiciel BTP intelligent</span>
+                        </a>
+                    </div>
+
+                    <!-- 06 — AUTOBAT (Small / Special) -->
+                    <div class="port-item small autobat-card" data-category="logiciel">
+                        <a href="https://autobat.pro/" target="_blank" rel="noopener noreferrer">
+                            <span class="port-number" style="color: rgba(255,255,255,0.25);">06</span>
+                            <div class="autobat-inner">
+                                <img src="assets/logo-autobat.jpg" alt="Autobat AI">
+                                <h3>Autobat AI</h3>
+                                <p>Logiciel BTP intelligent. Devis IA, planning, facturation.</p>
+                                <div class="port-tags" style="justify-content: center;">
+                                    <span class="port-tag">SaaS</span>
+                                    <span class="port-tag">IA</span>
+                                    <span class="port-tag">BTP</span>
+                                </div>
+                                <span class="port-view-btn">
+                                    Voir le produit
+                                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                </span>
                             </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Logiciel SaaS</span>
-                                <span class="portfolio-tag amber">IA</span>
-                                <span class="portfolio-tag red">BTP</span>
-                            </div>
-                            <h3>Autobat AI</h3>
-                            <p>Logiciel de gestion BTP avec IA. Devis automatiques, planning intelligent, facturation et app mobile pour les artisans du bâtiment.</p>
-                            <a href="https://autobat.pro/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
-                                Voir le produit
-                                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                        </div>
-                    </article>
+                        </a>
+                    </div>
 
                 </div>
             </div>
@@ -376,12 +510,12 @@
         <!-- CTA -->
         <section>
             <div class="container">
-                <div class="cta-block reveal">
+                <div class="cta-block reveal" style="background: var(--text-main);">
                     <h2>Votre projet pourrait être le prochain.</h2>
                     <p>Chaque réalisation commence par une conversation. Parlons de vos ambitions et construisons ensemble votre succès digital.</p>
-                    <a href="contact.html" class="btn btn-white">
+                    <a href="contact.html" class="btn" style="background: var(--primary); color: white;">
                         Démarrer mon projet
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                 </div>
             </div>
@@ -417,9 +551,21 @@
 
     <script src="script.js"></script>
     <script>
-        // Portfolio filter
+        // ===== SCROLL REVEAL FOR PORTFOLIO ITEMS =====
+        const portItems = document.querySelectorAll('.port-item');
+        const portObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    portObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        portItems.forEach(item => portObserver.observe(item));
+
+        // ===== PORTFOLIO FILTERS =====
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.portfolio-card');
+        const cards = document.querySelectorAll('.port-item');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -427,11 +573,16 @@
                 btn.classList.add('active');
                 const filter = btn.dataset.filter;
 
-                cards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
+                cards.forEach((card, i) => {
+                    const match = filter === 'all' || card.dataset.category === filter;
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+                    if (match) {
                         card.style.display = '';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
+                        requestAnimationFrame(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        });
                     } else {
                         card.style.opacity = '0';
                         card.style.transform = 'translateY(20px)';
