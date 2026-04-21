@@ -207,6 +207,7 @@ section { padding: 100px 5%; position: relative; }
 .btn-accent {
     background: var(--accent);
     color: #FFF;
+    font-weight: 800;
 }
 .btn-accent:hover {
     background: var(--accent-dark);
