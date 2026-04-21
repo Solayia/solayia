@@ -513,7 +513,8 @@
             background: rgba(6,6,10,0.7) !important;
             border-color: rgba(255,255,255,0.06) !important;
         }
-        .navbar-dark .logo { color: #FFF; }
+        .navbar-dark .logo .logo-dark { display: none; }
+        .navbar-dark .logo .logo-light { display: block; }
         .navbar-dark .nav-links a { color: rgba(255,255,255,0.75); }
         .navbar-dark .nav-links a:hover,
         .navbar-dark .nav-links a.active { color: #FFF; }
@@ -527,7 +528,8 @@
             border-color: rgba(0,0,0,0.06) !important;
             box-shadow: 0 4px 30px rgba(0,0,0,0.06);
         }
-        .navbar-light .logo { color: var(--text-main); }
+        .navbar-light .logo .logo-dark { display: block; }
+        .navbar-light .logo .logo-light { display: none; }
         .navbar-light .nav-links a { color: var(--text-muted); }
         .navbar-light .nav-links a:hover,
         .navbar-light .nav-links a.active { color: var(--primary); }
@@ -545,7 +547,7 @@
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-dark" role="navigation" aria-label="Menu principal">
-        <a href="index.html" class="logo">SOLAYIA<span>.</span></a>
+        <a href="index.html" class="logo"><img src="assets/logo-solayia-2.png" alt="Solayia" class="logo-dark"><img src="assets/logo-solayia-5.png" alt="Solayia" class="logo-light"></a>
         <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
         <ul class="nav-links">
             <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
@@ -847,7 +849,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3>SOLAYIA<span class="accent-text">.</span></h3>
+                    <h3><img src="assets/logo-solayia-5.png" alt="Solayia" style="height: 28px; width: auto;"></h3>
                     <p style="font-size: 0.9rem; margin-top: 8px;">Votre partenaire digital. Le client vient à toi.</p>
                 </div>
                 <div>
