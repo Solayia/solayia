@@ -157,7 +157,7 @@ section { padding: 100px 5%; position: relative; }
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 13px 28px;
+    padding: 10px 24px;
     border-radius: var(--radius-sm);
     font-family: var(--font-heading);
     font-weight: 600;

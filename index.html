@@ -592,6 +592,51 @@
 </head>
 <body>
 
+    <!-- ===== CINEMATIC INTRO ===== -->
+    <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.8s ease,visibility 0.8s ease;">
+        <style>
+            #intro-overlay .intro-line {
+                font-family: var(--font-heading);
+                font-weight: 800;
+                color: #FFF;
+                text-align: center;
+                position: absolute;
+                opacity: 0;
+                transform: translateY(20px);
+                max-width: 90vw;
+                line-height: 1.1;
+                letter-spacing: -0.03em;
+            }
+            #intro-overlay .intro-line.l1 { font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: #94A3B8; }
+            #intro-overlay .intro-line.l2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+            #intro-overlay .intro-line.l2 em { font-style: normal; background: linear-gradient(135deg, #2A4580, #D4A84B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+            .intro-fade-in { animation: introIn 0.7s ease forwards; }
+            .intro-fade-out { animation: introOut 0.5s ease forwards; }
+            @keyframes introIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes introOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
+        </style>
+        <div class="intro-line l1">Marre de chercher des nouveaux clients chaque mois ?</div>
+        <div class="intro-line l2">Avec <em>Solayia</em>, le client vient à toi.</div>
+    </div>
+    <script>
+    (function(){
+        const overlay = document.getElementById('intro-overlay');
+        const l1 = overlay.querySelector('.l1');
+        const l2 = overlay.querySelector('.l2');
+        // Phase 1: show line 1
+        setTimeout(() => l1.classList.add('intro-fade-in'), 300);
+        // Phase 2: hide line 1, show line 2
+        setTimeout(() => l1.classList.replace('intro-fade-in','intro-fade-out'), 2500);
+        setTimeout(() => l2.classList.add('intro-fade-in'), 3200);
+        // Phase 3: hide overlay
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            setTimeout(() => overlay.remove(), 800);
+        }, 5500);
+    })();
+    </script>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-dark" role="navigation" aria-label="Menu principal">
         <a href="index.html" class="logo"><img src="assets/logo-solayia-2.png" alt="Solayia" class="logo-dark"><img src="assets/logo-solayia-5.png" alt="Solayia" class="logo-light"></a>
@@ -779,7 +824,7 @@
                 </div>
             </div>
 
-            <div class="pillars-track" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 24px 5% 48px; max-width: 1200px; margin: 0 auto;">
+            <div class="pillars-track" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 24px 3% 48px; max-width: 1400px; margin: 0 auto;">
                 <style>
                     .pillar-card {
                         border-radius: 28px;
