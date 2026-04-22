@@ -600,7 +600,7 @@
             <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="realisations.html">Réalisations</a></li>
-            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> RDV pour 1er visuel offert</a></li>
+            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <span style="display:flex;flex-direction:column;line-height:1.2;"><strong style="font-size:0.95rem;">Prendre RDV</strong><span style="font-size:0.65rem;opacity:0.85;font-weight:500;">1er visuel offert</span></span></a></li>
         </ul>
     </nav>
 
@@ -665,24 +665,103 @@
             </div>
         </section>
 
-        <!-- ===== BANDEAU STATS compact ===== -->
-        <section style="padding: 28px 5%; background: #FFF; border-bottom: 1px solid #E8ECF1;">
-            <div style="display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
-                    <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5/5</span>
-                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">sur Google</span>
+        <!-- ===== BANDEAU STATS — Animated futuriste ===== -->
+        <section style="padding: 0; background: #FFF; border-bottom: 1px solid #E8ECF1; overflow: hidden;">
+            <style>
+                .stats-ribbon {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                .stat-block {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 40px 20px;
+                    position: relative;
+                    opacity: 0;
+                    transform: translateY(40px) scale(0.9);
+                    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+                }
+                .stat-block.visible {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                .stat-block:nth-child(1) { transition-delay: 0s; }
+                .stat-block:nth-child(2) { transition-delay: 0.15s; }
+                .stat-block:nth-child(3) { transition-delay: 0.3s; }
+                .stat-block:nth-child(4) { transition-delay: 0.45s; }
+                .stat-block::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 25%;
+                    height: 50%;
+                    width: 1px;
+                    background: linear-gradient(transparent, #E8ECF1, transparent);
+                }
+                .stat-block:last-child::after { display: none; }
+                .stat-value {
+                    font-family: var(--font-heading);
+                    font-weight: 800;
+                    font-size: 2.4rem;
+                    letter-spacing: -0.03em;
+                    background: linear-gradient(135deg, var(--primary), var(--accent));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    line-height: 1;
+                    margin-bottom: 6px;
+                }
+                .stat-label {
+                    font-size: 0.88rem;
+                    font-weight: 600;
+                    color: var(--text-muted);
+                    text-align: center;
+                }
+                .stat-glow {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 80px;
+                    height: 80px;
+                    transform: translate(-50%, -50%);
+                    background: radial-gradient(circle, rgba(27,45,91,0.06) 0%, transparent 70%);
+                    border-radius: 50%;
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                }
+                .stat-block:hover .stat-glow { opacity: 1; }
+                .stat-block:hover .stat-value { filter: brightness(1.2); }
+                @media (max-width: 700px) {
+                    .stats-ribbon { grid-template-columns: 1fr 1fr; }
+                    .stat-block:nth-child(2)::after { display: none; }
+                    .stat-block { padding: 28px 16px; }
+                    .stat-value { font-size: 1.8rem; }
+                }
+            </style>
+            <div class="stats-ribbon">
+                <div class="stat-block">
+                    <div class="stat-glow"></div>
+                    <div class="stat-value" data-count="5" data-suffix="/5">0</div>
+                    <div class="stat-label">sur Google</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
-                    <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">+10 ans</span>
-                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">d'expérience</span>
+                <div class="stat-block">
+                    <div class="stat-glow"></div>
+                    <div class="stat-value" data-count="10" data-prefix="+" data-suffix=" ans">0</div>
+                    <div class="stat-label">d'expérience</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
-                    <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">50+</span>
-                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">projets web</span>
+                <div class="stat-block">
+                    <div class="stat-glow"></div>
+                    <div class="stat-value" data-count="50" data-prefix="+" >0</div>
+                    <div class="stat-label">projets web</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
-                    <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0 €</span>
-                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">le 1er visuel est offert</span>
+                <div class="stat-block">
+                    <div class="stat-glow"></div>
+                    <div class="stat-value" data-count="0" data-suffix=" €">0</div>
+                    <div class="stat-label">le 1er visuel est offert</div>
                 </div>
             </div>
         </section>
@@ -1107,6 +1186,34 @@
                 navEl.classList.add('navbar-dark');
             }
         }, { passive: true });
+
+        // ===== STAT BLOCKS: stagger reveal + counter animation =====
+        const statBlocks = document.querySelectorAll('.stat-block');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Counter animation
+                    const valEl = entry.target.querySelector('.stat-value');
+                    if (valEl && valEl.dataset.count !== undefined) {
+                        const target = parseInt(valEl.dataset.count);
+                        const prefix = valEl.dataset.prefix || '';
+                        const suffix = valEl.dataset.suffix || '';
+                        const duration = 1200;
+                        const start = performance.now();
+                        const animate = (now) => {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            valEl.textContent = prefix + Math.round(target * eased) + suffix;
+                            if (progress < 1) requestAnimationFrame(animate);
+                        };
+                        requestAnimationFrame(animate);
+                    }
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        statBlocks.forEach(b => statObserver.observe(b));
     </script>
 </body>
 </html>
