@@ -625,13 +625,10 @@
             #intro-overlay.intro-exit { opacity:0;visibility:hidden;transform:scale(1.4); transition:opacity 0.9s ease,visibility 0.9s ease,transform 0.9s cubic-bezier(0.7,0,0.3,1); }
         </style>
         <div class="intro-particles" id="introParticles"></div>
-        <div class="intro-words">
-            <span>Fatigué</span>
-            <span>de chercher</span>
-            <span>des</span>
-            <span class="highlight-white">nouveaux clients</span>
-            <span>tous les mois</span>
-            <span>?</span>
+        <div class="intro-words" style="flex-direction:column;gap:0.15em;">
+            <span style="display:block;">Fatigué de chercher des</span>
+            <span class="highlight-white" style="display:block;">nouveaux clients</span>
+            <span style="display:block;">tous les mois ?</span>
         </div>
         <div class="intro-line2">Avec <em>Solayia</em>, le client vient à toi.</div>
     </div>
@@ -645,7 +642,7 @@
         const pc = document.getElementById('introParticles');
         for(let i=0;i<30;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*3)+'px';p.style.animationDuration=(4+Math.random()*8)+'s';p.style.animationDelay=(Math.random()*5)+'s';pc.appendChild(p);}
         // Phase 1: 3D stagger words
-        const delays = [400, 900, 1400, 1800, 2500, 3100];
+        const delays = [400, 1200, 2200];
         words.forEach((w,i)=>{setTimeout(()=>w.classList.add('show'), delays[i]||400+i*400);});
         // Phase 2: 3D exit line 1, 3D enter line 2
         setTimeout(()=>wordsContainer.classList.add('intro-all-out'), 4400);
