@@ -595,9 +595,9 @@
     <!-- ===== CINEMATIC INTRO ===== -->
     <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;perspective:1200px;">
         <style>
-            #intro-overlay .intro-particles { position:absolute;inset:0;overflow:hidden;z-index:0; }
-            #intro-overlay .intro-particles span { position:absolute;width:2px;height:2px;background:rgba(212,168,75,0.25);border-radius:50%;animation:pFloat linear infinite; }
-            @keyframes pFloat { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-10vh) scale(1.5);opacity:0} }
+            .snow-particles { position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none; }
+            .snow-particles span { position:absolute;width:2px;height:2px;background:#FFF;border-radius:50%;opacity:0;animation:snowUp linear infinite; }
+            @keyframes snowUp { 0%{transform:translateY(100%) translateX(0) scale(0);opacity:0} 8%{opacity:0.6} 50%{opacity:0.4} 92%{opacity:0.3} 100%{transform:translateY(-100%) translateX(30px) scale(0.5);opacity:0} }
             #intro-overlay .intro-words {
                 display:flex; flex-wrap:wrap; justify-content:center; gap:0.12em 0.35em;
                 max-width:80vw; position:absolute; font-family:var(--font-heading); font-weight:800;
@@ -624,7 +624,7 @@
             @keyframes introAllOut { from{opacity:1;transform:translateZ(0) rotateX(0deg) scale(1)} to{opacity:0;transform:translateZ(80px) rotateX(-10deg) scale(1.1)} }
             #intro-overlay.intro-exit { opacity:0;visibility:hidden;transform:scale(1.4); transition:opacity 0.9s ease,visibility 0.9s ease,transform 0.9s cubic-bezier(0.7,0,0.3,1); }
         </style>
-        <div class="intro-particles" id="introParticles"></div>
+        <div class="snow-particles" id="introParticles"></div>
         <div class="intro-words" style="flex-direction:column;gap:0.15em;">
             <span style="display:block;">Fatigué de chercher des</span>
             <span class="highlight-white" style="display:block;">nouveaux clients</span>
@@ -638,9 +638,9 @@
         const words = overlay.querySelectorAll('.intro-words span');
         const line2 = overlay.querySelector('.intro-line2');
         const wordsContainer = overlay.querySelector('.intro-words');
-        // Particles
+        // Snow particles for intro
         const pc = document.getElementById('introParticles');
-        for(let i=0;i<30;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*3)+'px';p.style.animationDuration=(4+Math.random()*8)+'s';p.style.animationDelay=(Math.random()*5)+'s';pc.appendChild(p);}
+        for(let i=0;i<50;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*2.5)+'px';p.style.animationDuration=(5+Math.random()*10)+'s';p.style.animationDelay=(Math.random()*6)+'s';pc.appendChild(p);}
         // Phase 1: 3D stagger words
         const delays = [400, 1200, 2200];
         words.forEach((w,i)=>{setTimeout(()=>w.classList.add('show'), delays[i]||400+i*400);});
@@ -672,6 +672,7 @@
     <main>
         <!-- ===== HERO AURORA ===== -->
         <section class="hero-aurora">
+            <div class="snow-particles" id="heroParticles" style="z-index:1;"></div>
             <div class="container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: stretch; max-width: 1400px;">
                 <!-- LEFT: Text -->
                 <div>
@@ -1233,6 +1234,10 @@
 
     <script src="script.js"></script>
     <script>
+        // Hero snow particles
+        const heroPC = document.getElementById('heroParticles');
+        if(heroPC){for(let i=0;i<40;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*2)+'px';p.style.animationDuration=(6+Math.random()*12)+'s';p.style.animationDelay=(Math.random()*8)+'s';heroPC.appendChild(p);}}
+
         // Navbar dark/light transition on scroll
         const navEl = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
