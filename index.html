@@ -423,7 +423,7 @@
         .product-card .btn { margin-top: auto; }
 
         /* ===== PROCESS ===== */
-        .process-section { padding: 120px 5%; background: #FAFAFA; }
+        .process-section { padding: 60px 5% 60px; background: #FAFAFA; }
         .process-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -600,7 +600,7 @@
             <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="realisations.html">Réalisations</a></li>
-            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <span style="display:flex;flex-direction:column;line-height:1.2;"><strong style="font-size:0.95rem;">Prendre RDV</strong><span style="font-size:0.65rem;opacity:0.85;font-weight:500;">1er visuel offert</span></span></a></li>
+            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <span style="display:flex;flex-direction:column;line-height:1.15;padding:2px 0;"><strong style="font-size:0.88rem;">Prendre RDV</strong><span style="font-size:0.73rem;opacity:0.85;font-weight:600;">1er visuel offert</span></span></a></li>
         </ul>
     </nav>
 
@@ -779,27 +779,20 @@
                 </div>
             </div>
 
-            <!-- Horizontal scroll pillars -->
-            <div class="pillars-track" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 0; padding: 24px 5% 60px; scrollbar-width: none;">
+            <div class="pillars-track" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 24px 5% 48px; max-width: 1200px; margin: 0 auto;">
                 <style>
-                    .pillars-track::-webkit-scrollbar { display: none; }
                     .pillar-card {
-                        flex: 0 0 85vw;
-                        max-width: 520px;
-                        min-height: 420px;
-                        scroll-snap-align: center;
                         border-radius: 28px;
-                        padding: 52px 44px;
+                        padding: 40px 32px;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
                         position: relative;
                         overflow: hidden;
-                        margin-right: 24px;
                         transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+                        min-height: 340px;
                     }
                     .pillar-card:hover { transform: translateY(-8px); }
-                    .pillar-card:last-child { margin-right: 0; }
                     .pillar-num {
                         font-family: var(--font-heading);
                         font-weight: 800;
@@ -823,7 +816,7 @@
                     .pillar-card p { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
                     .pillar-card:last-child h3 { color: var(--text-main); }
                     .pillar-card:last-child p { color: var(--text-muted); }
-                    @media (max-width: 900px) { .pillar-card { flex: 0 0 88vw; min-height: 360px; padding: 40px 32px; } }
+                    @media (max-width: 900px) { .pillars-track { grid-template-columns: 1fr !important; max-width: 500px; } .pillar-card { min-height: auto; } }
                 </style>
 
                 <!-- Pilier 1 : Rentabilité -->
