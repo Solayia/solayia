@@ -596,8 +596,8 @@
     <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;perspective:1200px;">
         <style>
             .snow-particles { position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none; }
-            .snow-particles span { position:absolute;bottom:-10px;width:2px;height:2px;background:#FFF;border-radius:50%;opacity:0;animation:snowUp linear infinite; }
-            @keyframes snowUp { 0%{transform:translateY(0) translateX(0);opacity:0} 8%{opacity:0.7} 50%{opacity:0.5} 92%{opacity:0.2} 100%{transform:translateY(-110vh) translateX(40px);opacity:0} }
+            .snow-particles span { position:absolute;bottom:0;width:2px;height:2px;background:rgba(255,255,255,0.6);border-radius:50%;animation:snowUp linear infinite; }
+            @keyframes snowUp { 0%{bottom:0;opacity:0;transform:translateX(0)} 5%{opacity:0.6} 50%{opacity:0.4} 95%{opacity:0.15} 100%{bottom:100%;opacity:0;transform:translateX(30px)} }
             #intro-overlay .intro-words {
                 display:flex; flex-wrap:wrap; justify-content:center; gap:0.12em 0.35em;
                 max-width:80vw; position:absolute; font-family:var(--font-heading); font-weight:800;
