@@ -109,10 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const acceptBtn = document.getElementById('accept-cookies');
     const refuseBtn = document.getElementById('refuse-cookies');
 
-    if (banner && !localStorage.getItem('cookieConsent')) {
+    // Cookie banner is now triggered by the intro cinematic script (index.html)
+    // For non-index pages, show after 2s
+    if (banner && !localStorage.getItem('cookieConsent') && !document.getElementById('intro-overlay')) {
         setTimeout(() => {
             banner.style.transform = 'translateY(0)';
-        }, 1500);
+        }, 2000);
     }
 
     if (acceptBtn) {
