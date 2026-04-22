@@ -660,16 +660,13 @@
         </style>
         <div class="intro-words">
             <span class="highlight">Marre</span>
-            <span>de</span>
-            <span>chercher</span>
+            <span class="highlight">de chercher</span>
             <span>des</span>
             <span class="highlight">nouveaux clients</span>
-            <span>tous</span>
-            <span>les</span>
-            <span>mois</span>
+            <span class="highlight">tous les mois</span>
             <span>?</span>
         </div>
-        <div class="intro-line2">Avec <em>Solayia</em>, le client vient à toi.</div>
+        <div class="intro-line2">Avec Solayia, <em>le client vient à toi.</em></div>
     </div>
     <script>
     (function(){
@@ -679,14 +676,14 @@
         const wordsContainer = overlay.querySelector('.intro-words');
 
         // Phase 1: reveal words one by one with stagger
-        const delays = [300, 700, 1000, 1300, 1600, 2200, 2400, 2600, 2800];
+        const delays = [300, 800, 1300, 1700, 2400, 3000];
         words.forEach((w, i) => {
             setTimeout(() => w.classList.add('show'), delays[i] || (300 + i * 300));
         });
 
         // Phase 2: fade out line 1, show line 2
-        setTimeout(() => wordsContainer.classList.add('intro-all-out'), 3800);
-        setTimeout(() => line2.classList.add('intro-l2-in'), 4500);
+        setTimeout(() => wordsContainer.classList.add('intro-all-out'), 4200);
+        setTimeout(() => line2.classList.add('intro-l2-in'), 4900);
 
         // Phase 3: fade out overlay → reveal site
         setTimeout(() => {
@@ -698,7 +695,7 @@
                 cookie.style.transform = 'translateY(0)';
             }
             setTimeout(() => overlay.remove(), 800);
-        }, 6800);
+        }, 7200);
     })();
     </script>
 
