@@ -640,7 +640,7 @@
         const wordsContainer = overlay.querySelector('.intro-words');
         // Snow particles for intro
         const pc = document.getElementById('introParticles');
-        for(let i=0;i<50;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*2.5)+'px';p.style.animationDuration=(5+Math.random()*10)+'s';p.style.animationDelay=(Math.random()*6)+'s';pc.appendChild(p);}
+        for(let i=0;i<60;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';const sz=(1+Math.random()*2.5);p.style.width=p.style.height=sz+'px';const dur=5+Math.random()*10;p.style.animationDuration=dur+'s';p.style.animationDelay=(Math.random()*dur)+'s';pc.appendChild(p);}
         // Phase 1: 3D stagger words
         const delays = [400, 1200, 2200];
         words.forEach((w,i)=>{setTimeout(()=>w.classList.add('show'), delays[i]||400+i*400);});
@@ -1236,7 +1236,7 @@
     <script>
         // Hero snow particles
         const heroPC = document.getElementById('heroParticles');
-        if(heroPC){for(let i=0;i<40;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*2)+'px';p.style.animationDuration=(6+Math.random()*12)+'s';p.style.animationDelay=(Math.random()*8)+'s';heroPC.appendChild(p);}}
+        if(heroPC){for(let i=0;i<60;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';const sz=(1+Math.random()*2.5);p.style.width=p.style.height=sz+'px';const dur=6+Math.random()*10;p.style.animationDuration=dur+'s';p.style.animationDelay=(Math.random()*dur)+'s';heroPC.appendChild(p);}}
 
         // Navbar dark/light transition on scroll
         const navEl = document.querySelector('.navbar');
