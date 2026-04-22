@@ -593,73 +593,38 @@
 <body>
 
     <!-- ===== CINEMATIC INTRO ===== -->
-    <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.8s ease,visibility 0.8s ease;">
+    <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;perspective:1200px;">
         <style>
+            #intro-overlay .intro-particles { position:absolute;inset:0;overflow:hidden;z-index:0; }
+            #intro-overlay .intro-particles span { position:absolute;width:2px;height:2px;background:rgba(212,168,75,0.25);border-radius:50%;animation:pFloat linear infinite; }
+            @keyframes pFloat { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-10vh) scale(1.5);opacity:0} }
             #intro-overlay .intro-words {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0 0.35em;
-                max-width: 85vw;
-                position: absolute;
-                font-family: var(--font-heading);
-                font-weight: 600;
-                font-size: clamp(1.5rem, 3.5vw, 2.4rem);
-                color: #64748B;
-                text-align: center;
-                line-height: 1.3;
+                display:flex; flex-wrap:wrap; justify-content:center; gap:0.12em 0.35em;
+                max-width:80vw; position:absolute; font-family:var(--font-heading); font-weight:800;
+                font-size:clamp(2.2rem, 5.5vw, 3.8rem); text-align:center; line-height:1.25; z-index:2;
             }
             #intro-overlay .intro-words span {
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity 0.5s ease, transform 0.5s ease;
-                display: inline-block;
-                color: #64748B;
-                font-weight: 800;
+                opacity:0; display:inline-block; color:#8899BB; font-weight:800;
+                transform:translateY(30px) rotateX(40deg) scale(0.9);
+                transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+                transform-style:preserve-3d;
             }
-            #intro-overlay .intro-words span.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            #intro-overlay .intro-words .highlight-white {
-                color: #FFF;
-                font-weight: 800;
-            }
+            #intro-overlay .intro-words span.show { opacity:1; transform:translateY(0) rotateX(0deg) scale(1); }
+            #intro-overlay .intro-words .highlight-white { color:#FFF; text-shadow:0 0 40px rgba(212,168,75,0.3); }
             #intro-overlay .intro-line2 {
-                font-family: var(--font-heading);
-                font-weight: 800;
-                font-size: clamp(2rem, 5vw, 3.5rem);
-                color: #FFF;
-                text-align: center;
-                position: absolute;
-                opacity: 0;
-                transform: translateY(20px) scale(0.95);
-                max-width: 90vw;
-                line-height: 1.1;
-                letter-spacing: -0.03em;
+                font-family:var(--font-heading); font-weight:800; font-size:clamp(2.4rem, 6vw, 4.2rem);
+                color:#FFF; text-align:center; position:absolute; opacity:0;
+                transform:translateZ(-100px) rotateX(15deg) scale(0.85); max-width:90vw;
+                line-height:1.1; letter-spacing:-0.03em; z-index:2; transform-style:preserve-3d;
             }
-            #intro-overlay .intro-line2 em {
-                font-style: normal;
-                background: linear-gradient(135deg, #2A4580, #D4A84B);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            .intro-l2-in {
-                animation: introL2In 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
-            }
-            .intro-all-out {
-                animation: introAllOut 0.5s ease forwards;
-            }
-            @keyframes introL2In {
-                from { opacity: 0; transform: translateY(20px) scale(0.95); }
-                to { opacity: 1; transform: translateY(0) scale(1); }
-            }
-            @keyframes introAllOut {
-                from { opacity: 1; transform: translateY(0); }
-                to { opacity: 0; transform: translateY(-20px); }
-            }
+            #intro-overlay .intro-line2 em { font-style:normal; background:linear-gradient(135deg,#2A4580,#D4A84B); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+            .intro-l2-in { animation:introL2In 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+            .intro-all-out { animation:introAllOut 0.6s cubic-bezier(0.7,0,0.3,1) forwards; }
+            @keyframes introL2In { from{opacity:0;transform:translateZ(-100px) rotateX(15deg) scale(0.85)} to{opacity:1;transform:translateZ(0) rotateX(0deg) scale(1)} }
+            @keyframes introAllOut { from{opacity:1;transform:translateZ(0) rotateX(0deg) scale(1)} to{opacity:0;transform:translateZ(80px) rotateX(-10deg) scale(1.1)} }
+            #intro-overlay.intro-exit { opacity:0;visibility:hidden;transform:scale(1.4); transition:opacity 0.9s ease,visibility 0.9s ease,transform 0.9s cubic-bezier(0.7,0,0.3,1); }
         </style>
+        <div class="intro-particles" id="introParticles"></div>
         <div class="intro-words">
             <span>Fatigué</span>
             <span>de chercher</span>
@@ -676,28 +641,22 @@
         const words = overlay.querySelectorAll('.intro-words span');
         const line2 = overlay.querySelector('.intro-line2');
         const wordsContainer = overlay.querySelector('.intro-words');
-
-        // Phase 1: reveal words one by one with stagger
-        const delays = [300, 800, 1300, 1700, 2400, 3000];
-        words.forEach((w, i) => {
-            setTimeout(() => w.classList.add('show'), delays[i] || (300 + i * 300));
-        });
-
-        // Phase 2: fade out line 1, show line 2
-        setTimeout(() => wordsContainer.classList.add('intro-all-out'), 4200);
-        setTimeout(() => line2.classList.add('intro-l2-in'), 4900);
-
-        // Phase 3: fade out overlay → reveal site
-        setTimeout(() => {
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
-            // Show cookie banner after intro
+        // Particles
+        const pc = document.getElementById('introParticles');
+        for(let i=0;i<30;i++){const p=document.createElement('span');p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(1+Math.random()*3)+'px';p.style.animationDuration=(4+Math.random()*8)+'s';p.style.animationDelay=(Math.random()*5)+'s';pc.appendChild(p);}
+        // Phase 1: 3D stagger words
+        const delays = [400, 900, 1400, 1800, 2500, 3100];
+        words.forEach((w,i)=>{setTimeout(()=>w.classList.add('show'), delays[i]||400+i*400);});
+        // Phase 2: 3D exit line 1, 3D enter line 2
+        setTimeout(()=>wordsContainer.classList.add('intro-all-out'), 4400);
+        setTimeout(()=>line2.classList.add('intro-l2-in'), 5200);
+        // Phase 3: zoom-burst exit
+        setTimeout(()=>{
+            overlay.classList.add('intro-exit');
             const cookie = document.getElementById('cookie-banner');
-            if (cookie && !localStorage.getItem('cookieConsent')) {
-                cookie.style.transform = 'translateY(0)';
-            }
-            setTimeout(() => overlay.remove(), 800);
-        }, 7200);
+            if(cookie && !localStorage.getItem('cookieConsent')){setTimeout(()=>{cookie.style.transform='translateY(0)';},600);}
+            setTimeout(()=>overlay.remove(), 1000);
+        }, 7500);
     })();
     </script>
 
