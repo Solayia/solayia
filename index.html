@@ -560,34 +560,7 @@
         @media (max-width: 480px) {
             .process-grid { grid-template-columns: 1fr; }
         }
-        /* ===== DARK NAVBAR ===== */
-        .navbar-dark {
-            background: rgba(11,15,26,0.7) !important;
-            border-color: rgba(255,255,255,0.06) !important;
-        }
-        .navbar-dark .logo .logo-dark { display: none; }
-        .navbar-dark .logo .logo-light { display: block; }
-        .navbar-dark .nav-links a { color: rgba(255,255,255,0.75); }
-        .navbar-dark .nav-links a:hover,
-        .navbar-dark .nav-links a.active { color: #FFF; }
-        .navbar-dark .nav-links a.btn { color: #FFF; }
-        .navbar-dark .burger div { background: #FFF; }
-        .navbar-dark .nav-links a:not(.btn)::after { background: #FFF; }
-
-        /* When scrolled to light section */
-        .navbar-light {
-            background: rgba(255,255,255,0.92) !important;
-            border-color: rgba(0,0,0,0.06) !important;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-        }
-        .navbar-light .logo .logo-dark { display: block; }
-        .navbar-light .logo .logo-light { display: none; }
-        .navbar-light .nav-links a { color: var(--text-muted); }
-        .navbar-light .nav-links a:hover,
-        .navbar-light .nav-links a.active { color: var(--primary); }
-        .navbar-light .nav-links a.btn { color: #FFF; }
-        .navbar-light .burger div { background: var(--text-main); }
-        .navbar-light .nav-links a:not(.btn)::after { background: var(--primary); }
+        /* Navbar dark/light styles now in style.css */
 
         @media (prefers-reduced-motion: reduce) {
             .hero-aurora::before, .hero-aurora::after { animation: none; }

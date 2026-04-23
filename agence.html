@@ -253,7 +253,7 @@
 </head>
 <body>
 
-    <nav class="navbar" role="navigation" aria-label="Menu principal" style="background: rgba(11,15,26,0.7); border-color: rgba(255,255,255,0.06);">
+    <nav class="navbar navbar-dark" role="navigation" aria-label="Menu principal">
         <a href="index.html" class="logo"><img src="assets/logo-solayia-2.png" alt="Solayia" class="logo-dark"><img src="assets/logo-solayia-5.png" alt="Solayia" class="logo-light"></a>
         <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
         <ul class="nav-links">
@@ -310,7 +310,6 @@
                     </span>
                     <h2>Deux passionnés,<br>un objectif commun.</h2>
                     <p>Adrien, stratège marketing, et Kevin, développeur senior. Ensemble, on a plus de 10 ans d'expérience dans le digital. On a créé Solayia avec une conviction simple : <strong>le digital doit être un levier de croissance concret</strong>, pas un poste de dépense flou.</p>
-                    <p>On travaille depuis Toulouse, une ville qu'on adore. On est fans du <strong>Stade Toulousain</strong>, amoureux de la gastronomie du Sud-Ouest, et vous pourrez parfois nous croiser en train de courir le long du <strong>Canal du Midi</strong> ou au bord de la <strong>Garonne</strong>.</p>
                     <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 12px;">
                         Rencontrons-nous
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -338,7 +337,7 @@
                 </div>
                 <div class="ag-visual reveal">
                     <div class="ag-photo" style="aspect-ratio: 4/3;">
-                        <img src="https://images.unsplash.com/photo-1550340499-a6c60fc8287c?w=800&q=80" alt="Canal du Midi à Toulouse" loading="lazy">
+                        <img src="assets/toulouse-terrain.jpg" alt="Toulouse, notre terrain de jeu" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -375,7 +374,7 @@
                 </div>
                 <div class="ag-visual reveal">
                     <div class="ag-photo" style="aspect-ratio: 4/3;">
-                        <img src="https://images.unsplash.com/photo-1623788317768-5b8aae35264d?w=800&q=80" alt="Vue aérienne de Toulouse, la Ville Rose" loading="lazy">
+                        <img src="assets/valeurs.jpg" alt="Ce en quoi on croit - Solayia" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -395,7 +394,7 @@
                 </div>
                 <div class="ag-visual reveal">
                     <div class="ag-photo" style="aspect-ratio: 4/3;">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Réunion de networking BNI Toulouse" loading="lazy">
+                        <img src="assets/tissu-local.jpg" alt="Ancrés dans le tissu local - Solayia" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -454,5 +453,19 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const navEl = document.querySelector('.navbar');
+        const heroEl = document.querySelector('.ag-hero');
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroEl ? heroEl.offsetTop + heroEl.offsetHeight - 100 : window.innerHeight - 100;
+            if (window.scrollY > heroBottom) {
+                navEl.classList.remove('navbar-dark');
+                navEl.classList.add('navbar-light');
+            } else {
+                navEl.classList.remove('navbar-light');
+                navEl.classList.add('navbar-dark');
+            }
+        }, { passive: true });
+    </script>
 </body>
 </html>

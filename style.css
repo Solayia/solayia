@@ -594,6 +594,44 @@ footer a:hover { color: #FFF; }
     }
 }
 
+/* --- 14b. NAVBAR DARK/LIGHT TRANSITION --- */
+.navbar-dark {
+    background: rgba(10,26,58,0.75) !important;
+    border-color: rgba(255,255,255,0.06) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.navbar-dark .logo .logo-dark { display: none; }
+.navbar-dark .logo .logo-light { display: block; }
+.navbar-dark .nav-links a { color: rgba(255,255,255,0.75); }
+.navbar-dark .nav-links a:hover,
+.navbar-dark .nav-links a.active { color: #FFF; }
+.navbar-dark .nav-links a.btn { color: #FFF; }
+.navbar-dark .burger div { background: #FFF; }
+.navbar-dark .nav-links a:not(.btn)::after { background: #FFF; }
+
+.navbar-light {
+    background: rgba(255,255,255,0.92) !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+}
+.navbar-light .logo .logo-dark { display: block; }
+.navbar-light .logo .logo-light { display: none; }
+.navbar-light .nav-links a { color: var(--text-muted); }
+.navbar-light .nav-links a:hover,
+.navbar-light .nav-links a.active { color: var(--primary); }
+.navbar-light .nav-links a.btn { color: #FFF; }
+.navbar-light .burger div { background: var(--text-main); }
+.navbar-light .nav-links a:not(.btn)::after { background: var(--primary); }
+
+/* --- 14c. BOUTON RDV COMPACT --- */
+.nav-links .btn-accent {
+    padding: 4px 16px;
+}
+.nav-links .btn-accent span {
+    padding: 0 !important;
+}
+
 /* --- 15. BURGER MOBILE --- */
 .burger { display: none; cursor: pointer; z-index: 1001; padding: 8px; }
 .burger div {
