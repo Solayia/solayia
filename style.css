@@ -711,8 +711,14 @@ footer a:hover { color: #FFF; }
         gap: 24px;
     }
     .nav-links.nav-active { transform: translateX(0); }
-    .nav-links a { font-size: 1.3rem; }
+    /* Force dark text in mobile menu even on dark navbar pages */
+    .nav-links a { font-size: 1.3rem; color: var(--text-main) !important; }
+    .nav-links a.btn { color: #FFF !important; }
     .nav-links a::after { display: none; }
+    /* Burger stays white on dark, but toggle X uses dark on open menu */
+    .navbar-dark .toggle .line1,
+    .navbar-dark .toggle .line2,
+    .navbar-dark .toggle .line3 { background: var(--text-main); }
 
     h1 { font-size: 2.5rem; }
     .cta-block { padding: 48px 24px; border-radius: 16px; }
