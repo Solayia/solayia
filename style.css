@@ -121,7 +121,7 @@ section { padding: 100px 5%; position: relative; }
     display: block;
 }
 .logo .logo-dark { display: block; }
-.logo .logo-light { display: none; }
+.logo .logo-light { display: none; height: 46px; width: auto; }
 .nav-links {
     display: flex;
     gap: 40px;

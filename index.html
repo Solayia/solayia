@@ -67,7 +67,7 @@
             align-items: center;
             padding-top: 100px;
             padding-bottom: 40px;
-            background: #06060A;
+            background: var(--bg-dark);
             position: relative;
             overflow: hidden;
         }
@@ -351,7 +351,7 @@
 
         /* ===== PRODUCTS SECTION ===== */
         .products-section {
-            background: #06060A;
+            background: var(--bg-dark);
             padding: 120px 5%;
             position: relative;
             overflow: hidden;
@@ -504,7 +504,7 @@
         .cta-box {
             max-width: 1200px;
             margin: 0 auto;
-            background: #06060A;
+            background: var(--bg-dark);
             border-radius: 28px;
             padding: 80px 60px;
             text-align: center;
@@ -598,7 +598,7 @@
 <body>
 
     <!-- ===== CINEMATIC INTRO ===== -->
-    <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#06060A;display:flex;align-items:center;justify-content:center;flex-direction:column;perspective:1200px;">
+    <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:var(--bg-dark);display:flex;align-items:center;justify-content:center;flex-direction:column;perspective:1200px;">
         <style>
             #intro-overlay .intro-words {
                 display:flex; flex-wrap:wrap; justify-content:center; gap:0.12em 0.35em;
@@ -897,7 +897,7 @@
                 </style>
 
                 <!-- Pilier 1 : Rentabilité -->
-                <div class="pillar-card" style="background: #06060A; color: #FFF;">
+                <div class="pillar-card" style="background: var(--bg-dark); color: #FFF;">
                     <div class="pillar-num" style="color: #FFF;">01</div>
                     <div>
                         <div class="pillar-icon" style="background: rgba(212,168,75,0.15);">
@@ -947,6 +947,8 @@
                 .home-offer h4 { font-family:var(--font-heading); font-weight:800; font-size:1rem; letter-spacing:-0.02em; margin-bottom:8px; line-height:1.2; }
                 .home-offer .ho-price { font-family:var(--font-heading); font-weight:900; font-size:1.15rem; color:var(--primary); margin-top:auto; padding-top:12px; }
                 .home-offer .ho-price span { font-size:0.78rem; font-weight:600; color:var(--text-muted); }
+                .home-offer .ho-price .ho-from { font-size:0.72rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:2px; }
+                .home-offer .ho-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin-bottom:0; flex:1; }
                 @media (max-width:900px) { .home-offers-grid { grid-template-columns: 1fr 1fr; } }
                 @media (max-width:500px) { .home-offers-grid { grid-template-columns: 1fr; } }
             </style>
@@ -963,42 +965,50 @@
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
                         <h4>Site vitrine & E-commerce</h4>
-                        <div class="ho-price">1 490 &euro; <span>HT</span></div>
+                        <p class="ho-desc">Votre vitrine digitale qui convertit.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 1 490 &euro;</div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
                         <h4>Application mobile & SaaS</h4>
-                        <div class="ho-price">4 490 &euro; <span>HT</span></div>
+                        <p class="ho-desc">De l'idée au déploiement.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 4 490 &euro;</div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
                         <h4>Référencement SEO / GEO</h4>
-                        <div class="ho-price">490 &euro; <span>/ mois</span></div>
+                        <p class="ho-desc">Apparaissez en premier sur Google.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 490 &euro; <span>/mois</span></div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
                         <h4>Acquisition digitale</h4>
-                        <div class="ho-price">490 &euro; <span>/ mois</span></div>
+                        <p class="ho-desc">Générez des leads qualifiés.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 490 &euro; <span>/mois</span></div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(6,6,10,0.05);"><svg viewBox="0 0 24 24" style="stroke:#333;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
                         <h4>Maintenance & hébergement</h4>
-                        <div class="ho-price">49 &euro; <span>/ mois</span></div>
+                        <p class="ho-desc">Votre site rapide et sécurisé.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 49 &euro; <span>/mois</span></div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
                         <h4>Design & charte graphique</h4>
-                        <div class="ho-price">1 490 &euro; <span>HT</span></div>
+                        <p class="ho-desc">L'image qui inspire confiance.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 1 490 &euro;</div>
                     </div>
                     <div class="home-offer reveal">
                         <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
                         <h4>Page & avis Google</h4>
-                        <div class="ho-price">490 &euro; <span>HT</span></div>
+                        <p class="ho-desc">Boostez votre e-réputation locale.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 490 &euro;</div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(6,6,10,0.05);"><svg viewBox="0 0 24 24" style="stroke:#333;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
+                        <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
                         <h4>Accompagnement LinkedIn</h4>
-                        <div class="ho-price">490 &euro; <span>HT</span></div>
+                        <p class="ho-desc">Votre machine à opportunités B2B.</p>
+                        <div class="ho-price"><span class="ho-from">À partir de</span> 490 &euro;</div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;" class="reveal">
@@ -1050,10 +1060,6 @@
                                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Optimisation SEO locale</li>
                                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Génération de leads</li>
                             </ul>
-                            <a href="https://installe-ta-clim.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
-                                Voir le site
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
                         </div>
                     </div>
 
@@ -1085,10 +1091,6 @@
                                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestion complète de chantiers</li>
                                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Application mobile terrain</li>
                             </ul>
-                            <a href="https://autobat.pro/" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-full">
-                                Voir le logiciel
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -1217,14 +1219,18 @@
         </section>
 
         <!-- ===== CTA ===== -->
-        <section class="final-cta">
-            <div class="cta-box reveal">
-                <h2>Un vieux site ? Peu d'avis Google ?<br>Aucune présence en ligne ?</h2>
-                <p>Prenez rendez-vous avec nous et repartez avec un visuel de votre nouvelle présence en ligne — gratuitement. Dès qu'on se rencontre, on passe à l'action.</p>
-                <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="box-shadow: 0 0 30px rgba(27,45,91,0.3);">
-                    Prendre rendez-vous — c'est gratuit
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
+        <section style="padding: 100px 5%;">
+            <div class="container">
+                <div class="cta-block reveal" style="background: var(--bg-dark); border-radius: 28px; position: relative; overflow: hidden;">
+                    <div style="position:absolute;top:-30%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(27,45,91,0.15) 0%,transparent 70%);border-radius:50%;"></div>
+                    <div style="position:absolute;bottom:-20%;left:-5%;width:300px;height:300px;background:radial-gradient(circle,rgba(212,168,75,0.08) 0%,transparent 70%);border-radius:50%;"></div>
+                    <h2 style="position:relative;z-index:2;">Un vieux site ? Peu d'avis Google ?<br>Aucune présence en ligne ?</h2>
+                    <p style="position:relative;z-index:2;">Prenez rendez-vous avec nous et repartez avec un visuel de votre nouvelle présence en ligne — gratuitement. Dès qu'on se rencontre, on passe à l'action.</p>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="box-shadow: 0 0 30px rgba(27,45,91,0.3); position:relative;z-index:2;">
+                        Prendre rendez-vous — c'est gratuit
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -1234,8 +1240,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3><img src="assets/logo-solayia-5.png" alt="Solayia" style="height: 28px; width: auto;"></h3>
-                    <p style="font-size: 0.9rem; margin-top: 8px;">Votre partenaire digital. Le client vient à toi.</p>
+                    <h3><img src="assets/logo-solayia-5.png" alt="Solayia - Agence digitale Toulouse" style="height: 28px; width: auto;"></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Solayia est une agence web et digitale basée à Toulouse, en Haute-Garonne. Nous accompagnons les dirigeants de TPE et PME dans leur transformation numérique : création de sites internet, référencement naturel (SEO), acquisition de clients et stratégie digitale.</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Depuis plus de 10 ans, notre agence internet toulousaine conçoit des solutions sur-mesure pour développer votre visibilité en ligne et générer des leads qualifiés dans toute la région Occitanie et au-delà.</p>
                 </div>
                 <div>
                     <h4>Navigation</h4>
