@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestations Solayia | Site vitrine, E-commerce, SEO & Acquisition digitale</title>
+    <meta name="description" content="Solayia aide les dirigeants TPE/PME a acquerir des clients grace au digital : site vitrine, e-commerce, SEO, acquisition digitale, maintenance et design.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://solayia.github.io/solayia/prestations.html">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prestations Solayia | Site vitrine, E-commerce, SEO & Acquisition">
+    <meta property="og:description" content="On cree votre presence digitale pour que le client vienne a vous. Site vitrine, e-commerce, SEO, acquisition digitale.">
+    <meta property="og:url" content="https://solayia.github.io/solayia/prestations.html">
+    <meta property="og:image" content="https://solayia.github.io/solayia/assets/logo-solayia-4.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prestations Solayia | Votre partenaire digital">
+    <meta name="twitter:description" content="Site vitrine, e-commerce, SEO, acquisition digitale. Le client vient a toi.">
+    <meta name="twitter:image" content="https://solayia.github.io/solayia/assets/logo-solayia-4.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== HERO ===== */
+        .prest-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: flex-end;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            background: #06060A;
+            position: relative;
+            overflow: hidden;
+        }
+        .prest-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(27,45,91,0.15) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .prest-hero .container { position: relative; z-index: 2; }
+        .prest-hero h1 {
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: #FFF;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+        }
+        .prest-hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prest-hero p { color: #94A3B8; font-size: 1.15rem; max-width: 600px; }
+        .prest-hero .tag {
+            background: rgba(255,255,255,0.06);
+            color: #FFF;
+            border-color: rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .prest-section {
+            padding: 100px 5%;
+            background: #FAFAFA;
+        }
+        .prest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ===== CARD ===== */
+        .prest-card {
+            background: #FFF;
+            border: 1px solid #E8ECF1;
+            border-radius: 20px;
+            padding: 40px 32px 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, border-color 0.3s ease;
+        }
+        .prest-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(27,45,91,0.10);
+            border-color: var(--primary-light);
+        }
+        .prest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .prest-card:hover::before { opacity: 1; }
+
+        /* Card icon */
+        .prest-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+        }
+        .prest-card-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .prest-card-icon.indigo { background: rgba(27,45,91,0.08); }
+        .prest-card-icon.indigo svg { stroke: var(--primary); }
+        .prest-card-icon.gold { background: rgba(212,168,75,0.1); }
+        .prest-card-icon.gold svg { stroke: var(--accent); }
+        .prest-card-icon.dark { background: rgba(6,6,10,0.06); }
+        .prest-card-icon.dark svg { stroke: #333; }
+
+        /* Card content */
+        .prest-card h3 {
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .prest-card .prest-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        /* Types de besoins */
+        .prest-needs {
+            margin-bottom: 28px;
+        }
+        .prest-needs-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .prest-needs ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .prest-needs li {
+            background: #F1F5F9;
+            color: var(--text-main);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        /* Price */
+        .prest-price {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #F1F5F9;
+        }
+        .prest-price-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .prest-price-value {
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .prest-price-suffix {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* CTA button */
+        .prest-card .btn-devis {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: #FFF;
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .prest-card .btn-devis:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+        }
+        .prest-card .btn-devis svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== PACK CTA ===== */
+        .prest-pack {
+            padding: 100px 5%;
+            background: #06060A;
+        }
+        .prest-pack-box {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        .prest-pack-box::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(27,45,91,0.12) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .prest-pack-box h2 {
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #FFF;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 16px;
+        }
+        .prest-pack-box p {
+            color: #94A3B8;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            position: relative;
+            z-index: 2;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .prest-pack-box .btn { position: relative; z-index: 2; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 720px) {
+            .prest-grid { grid-template-columns: 1fr; }
+            .prest-section { padding: 60px 5%; }
+            .prest-pack { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal" style="background: rgba(6,6,10,0.7); border-color: rgba(255,255,255,0.06);">
+        <a href="index.html" class="logo"><img src="assets/logo-solayia-2.png" alt="Solayia" class="logo-dark"><img src="assets/logo-solayia-5.png" alt="Solayia" class="logo-light"></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="prestations.html" class="active" aria-current="page">Prestations</a></li>
+            <li><a href="realisations.html">Réalisations</a></li>
+            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <span style="display:flex;flex-direction:column;line-height:1.15;padding:2px 0;"><strong style="font-size:0.88rem;">Prendre RDV</strong><span style="font-size:0.73rem;opacity:0.85;font-weight:600;">1er visuel offert</span></span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="prest-hero">
+            <div class="container">
+                <span class="tag reveal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Nos Prestations
+                </span>
+                <h1 class="reveal">Des solutions<br><span class="gradient-text">a votre mesure.</span></h1>
+                <p class="reveal">Chaque prestation est pensée pour vous apporter un retour concret. On s'adapte a votre budget, votre secteur et vos objectifs de croissance.</p>
+            </div>
+        </section>
+
+        <!-- CARDS GRID -->
+        <section class="prest-section">
+            <div class="prest-grid">
+
+                <!-- CARD 1 : Site vitrine & E-commerce -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon indigo">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Site vitrine & E-commerce</h3>
+                    <p class="prest-desc">Un site moderne, rapide et optimisé pour convertir vos visiteurs en clients. Design sur-mesure, responsive, SEO-ready.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Site vitrine</li>
+                            <li>Boutique en ligne</li>
+                            <li>Landing page</li>
+                            <li>Refonte</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">1 490 &euro;</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 2 : Application mobile & SaaS -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon gold">
+                        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <h3>Application mobile & SaaS</h3>
+                    <p class="prest-desc">Application mobile iOS/Android ou plateforme SaaS sur-mesure. De l'idée au déploiement, on gère tout le développement.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>App mobile</li>
+                            <li>SaaS / Web app</li>
+                            <li>Logiciel métier</li>
+                            <li>MVP</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">4 490 &euro;</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 3 : Référencement SEO / GEO -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon indigo">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+                    <h3>Référencement SEO / GEO</h3>
+                    <p class="prest-desc">Apparaissez en premier sur Google dans votre zone. Stratégie SEO locale et nationale pour attirer des prospects qualifiés chaque mois.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>SEO local</li>
+                            <li>SEO national</li>
+                            <li>Blogging</li>
+                            <li>Audit SEO</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">490 &euro;</span>
+                        <span class="prest-price-suffix">/ mois</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 4 : Acquisition digitale -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon gold">
+                        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    </div>
+                    <h3>Acquisition digitale</h3>
+                    <p class="prest-desc">Google Ads, Meta Ads, campagnes ciblées : on génère du trafic qualifié et des leads pour votre business chaque mois.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Google Ads</li>
+                            <li>Meta Ads</li>
+                            <li>Retargeting</li>
+                            <li>Leads</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">490 &euro;</span>
+                        <span class="prest-price-suffix">/ mois</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 5 : Maintenance & hébergement -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon dark">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Maintenance & hébergement</h3>
+                    <p class="prest-desc">Votre site reste rapide, sécurisé et a jour. Hébergement premium, sauvegardes, mises a jour et support technique inclus.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Hébergement</li>
+                            <li>Maintenance</li>
+                            <li>Sécurité</li>
+                            <li>Support</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">49 &euro;</span>
+                        <span class="prest-price-suffix">/ mois</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 6 : Design & charte graphique -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon gold">
+                        <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                    </div>
+                    <h3>Design & charte graphique</h3>
+                    <p class="prest-desc">Logo, identité visuelle, supports print et digitaux. On crée l'image qui inspire confiance a vos futurs clients.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Logo</li>
+                            <li>Charte graphique</li>
+                            <li>Print</li>
+                            <li>Supports digitaux</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">1 490 &euro;</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 7 : Page & avis Google -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon indigo">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h3>Page & avis Google</h3>
+                    <p class="prest-desc">Optimisation de votre fiche Google Business, collecte automatique d'avis 5 étoiles et gestion de votre e-réputation locale.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Google Business</li>
+                            <li>Avis clients</li>
+                            <li>E-réputation</li>
+                            <li>SEO local</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">490 &euro;</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- CARD 8 : Accompagnement LinkedIn -->
+                <div class="prest-card reveal">
+                    <div class="prest-card-icon dark">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </div>
+                    <h3>Accompagnement LinkedIn</h3>
+                    <p class="prest-desc">Stratégie de contenu, optimisation de profil, prospection ciblée. On fait de LinkedIn votre machine a générer des opportunités B2B.</p>
+                    <div class="prest-needs">
+                        <div class="prest-needs-title">Type de besoin</div>
+                        <ul>
+                            <li>Personal branding</li>
+                            <li>Contenu</li>
+                            <li>Prospection</li>
+                            <li>B2B</li>
+                        </ul>
+                    </div>
+                    <div class="prest-price">
+                        <span class="prest-price-label">A partir de</span>
+                        <span class="prest-price-value">490 &euro;</span>
+                    </div>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn-devis">
+                        Demander un devis
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PACK CTA -->
+        <section class="prest-pack">
+            <div class="prest-pack-box reveal">
+                <h2>Besoin de plusieurs prestations ?</h2>
+                <p>On construit un pack sur-mesure adapté a votre budget et vos objectifs. Prenez rendez-vous, on vous fait une offre personnalisée — gratuitement.</p>
+                <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="box-shadow: 0 0 30px rgba(27,45,91,0.3);">
+                    Prendre rendez-vous — c'est gratuit
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3><img src="assets/logo-solayia-5.png" alt="Solayia" style="height: 28px; width: auto;"></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Votre partenaire digital. Le client vient a toi.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="prestations.html">Prestations</a></li>
+                        <li><a href="realisations.html">Réalisations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="legal.html#confidentialite">Politique de Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Solayia. Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
