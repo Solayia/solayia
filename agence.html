@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence Solayia | Agence digitale a Toulouse depuis +10 ans</title>
+    <meta name="description" content="Solayia, agence digitale basee a Toulouse. +10 ans d'experience, passionnes par le digital et ancres dans la Ville Rose.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://solayia.github.io/solayia/agence.html">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Agence Solayia | Agence digitale a Toulouse">
+    <meta property="og:description" content="Basee a Toulouse, l'equipe Solayia vous accompagne depuis +10 ans dans votre croissance digitale.">
+    <meta property="og:url" content="https://solayia.github.io/solayia/agence.html">
+    <meta property="og:image" content="https://solayia.github.io/solayia/assets/logo-solayia-4.png">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== HERO ===== */
+        .ag-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: flex-end;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            background: #06060A;
+            position: relative;
+            overflow: hidden;
+        }
+        .ag-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(27,45,91,0.15) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .ag-hero .container { position: relative; z-index: 2; }
+        .ag-hero h1 {
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: #FFF;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+        }
+        .ag-hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .ag-hero p { color: #94A3B8; font-size: 1.15rem; max-width: 600px; }
+        .ag-hero .tag {
+            background: rgba(255,255,255,0.06);
+            color: #FFF;
+            border-color: rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        /* ===== STATS BAR ===== */
+        .ag-stats {
+            padding: 0;
+            background: #FFF;
+            border-bottom: 1px solid #E8ECF1;
+        }
+        .ag-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .ag-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        .ag-stat::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background: linear-gradient(transparent, #E8ECF1, transparent);
+        }
+        .ag-stat:last-child::after { display: none; }
+        .ag-stat-val {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 2.4rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .ag-stat-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ===== SECTION LAYOUTS ===== */
+        .ag-section { padding: 100px 5%; }
+        .ag-section.alt { background: #FAFAFA; }
+        .ag-section.dark { background: #06060A; }
+        .ag-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .ag-layout.reverse .ag-text { order: 2; }
+        .ag-layout.reverse .ag-visual { order: 1; }
+        .ag-text h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+        .ag-section.dark h2 { color: #FFF; }
+        .ag-text p { margin-bottom: 20px; line-height: 1.7; }
+        .ag-section.dark p { color: #94A3B8; }
+
+        /* Visual photo */
+        .ag-photo {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #E8ECF1;
+        }
+        .ag-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .ag-section.dark .ag-photo {
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        /* Values grid */
+        .ag-values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .ag-value {
+            background: #FFF;
+            border: 1px solid #E8ECF1;
+            border-radius: 16px;
+            padding: 24px 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .ag-value:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .ag-section.dark .ag-value {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .ag-section.dark .ag-value:hover { border-color: var(--primary-light); }
+        .ag-value h4 { font-weight: 800; font-size: 1rem; margin-bottom: 6px; }
+        .ag-section.dark .ag-value h4 { color: #FFF; }
+        .ag-value p { font-size: 0.88rem; margin-bottom: 0; }
+
+        /* Google Map CTA */
+        .ag-map-cta {
+            padding: 80px 5%;
+            background: #FAFAFA;
+        }
+        .ag-map-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #06060A;
+            border-radius: 28px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ag-map-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(27,45,91,0.12) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .ag-map-box h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: #FFF;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 16px;
+        }
+        .ag-map-box p {
+            color: #94A3B8;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 28px;
+        }
+        .ag-map-box .btn { position: relative; z-index: 2; }
+        .ag-map-iframe {
+            position: relative;
+            z-index: 2;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .ag-map-iframe iframe {
+            width: 100%;
+            height: 280px;
+            border: none;
+            display: block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .ag-layout { grid-template-columns: 1fr; gap: 40px; }
+            .ag-layout.reverse .ag-text { order: 1; }
+            .ag-layout.reverse .ag-visual { order: 2; }
+            .ag-stats-grid { grid-template-columns: 1fr 1fr; }
+            .ag-stat:nth-child(2)::after { display: none; }
+            .ag-values-grid { grid-template-columns: 1fr; }
+            .ag-map-box { grid-template-columns: 1fr; padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal" style="background: rgba(6,6,10,0.7); border-color: rgba(255,255,255,0.06);">
+        <a href="index.html" class="logo"><img src="assets/logo-solayia-2.png" alt="Solayia" class="logo-dark"><img src="assets/logo-solayia-5.png" alt="Solayia" class="logo-light"></a>
+        <div class="burger" aria-label="Menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="agence.html" class="active" aria-current="page">Agence</a></li>
+            <li><a href="prestations.html">Prestations</a></li>
+            <li><a href="realisations.html">Réalisations</a></li>
+            <li><a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <span style="display:flex;flex-direction:column;line-height:1.15;padding:2px 0;"><strong style="font-size:0.88rem;">Prendre RDV</strong><span style="font-size:0.73rem;opacity:0.85;font-weight:600;">1er visuel offert</span></span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="ag-hero">
+            <div class="container">
+                <span class="tag reveal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Toulouse, France
+                </span>
+                <h1 class="reveal">Une agence digitale<br><span class="gradient-text">ancree a Toulouse.</span></h1>
+                <p class="reveal">Depuis plus de 10 ans, on accompagne les dirigeants TPE/PME de la Ville Rose et d'ailleurs dans leur croissance digitale. On connait le terrain, on connait vos enjeux.</p>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="ag-stats">
+            <div class="ag-stats-grid">
+                <div class="ag-stat reveal">
+                    <div class="ag-stat-val">+10 ans</div>
+                    <div class="ag-stat-label">d'experience a Toulouse</div>
+                </div>
+                <div class="ag-stat reveal">
+                    <div class="ag-stat-val">5/5</div>
+                    <div class="ag-stat-label">sur Google</div>
+                </div>
+                <div class="ag-stat reveal">
+                    <div class="ag-stat-val">+50</div>
+                    <div class="ag-stat-label">projets livres</div>
+                </div>
+                <div class="ag-stat reveal">
+                    <div class="ag-stat-val">100%</div>
+                    <div class="ag-stat-label">clients satisfaits</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1 : QUI SOMMES-NOUS -->
+        <section class="ag-section">
+            <div class="ag-layout">
+                <div class="ag-text reveal">
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        L'equipe
+                    </span>
+                    <h2>Deux passionnes,<br>un objectif commun.</h2>
+                    <p>Adrien, stratege marketing, et Kevin, developpeur senior. Ensemble, on a plus de 10 ans d'experience dans le digital. On a cree Solayia avec une conviction simple : <strong>le digital doit etre un levier de croissance concret</strong>, pas un poste de depense flou.</p>
+                    <p>On travaille depuis Toulouse, une ville qu'on adore. On est fans du <strong>Stade Toulousain</strong>, amoureux de la gastronomie du Sud-Ouest, et vous pourrez parfois nous croiser en train de courir le long du <strong>Canal du Midi</strong> ou au bord de la <strong>Garonne</strong>.</p>
+                    <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 12px;">
+                        Rencontrons-nous
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+                <div class="ag-visual reveal">
+                    <div class="ag-photo" style="aspect-ratio: 4/3;">
+                        <img src="assets/IMG_0601.jpeg" alt="Adrien et Kevin, cofondateurs Solayia a Toulouse">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : TOULOUSE -->
+        <section class="ag-section alt">
+            <div class="ag-layout reverse">
+                <div class="ag-text reveal">
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        La Ville Rose
+                    </span>
+                    <h2>Toulouse, notre terrain de jeu.</h2>
+                    <p>On connait Toulouse comme notre poche. Ses quartiers, ses entreprises, ses enjeux locaux. Cette proximite, c'est ce qui fait la difference : on comprend votre marche parce qu'on y vit.</p>
+                    <p>Le matin, on court au bord du Canal du Midi. Le midi, on deguste un cassoulet ou un magret. Le soir, on vibre avec le Stade Toulousain. Et entre tout ca, on construit votre presence digitale.</p>
+                </div>
+                <div class="ag-visual reveal">
+                    <div class="ag-photo" style="aspect-ratio: 4/3;">
+                        <img src="https://images.unsplash.com/photo-1550340499-a6c60fc8287c?w=800&q=80" alt="Canal du Midi a Toulouse" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : NOS VALEURS -->
+        <section class="ag-section dark">
+            <div class="ag-layout">
+                <div class="ag-text reveal">
+                    <span class="tag" style="background: rgba(255,255,255,0.06); color: #FFF; border-color: rgba(255,255,255,0.1);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        Nos engagements
+                    </span>
+                    <h2>Ce en quoi on croit.</h2>
+                    <p>On ne se contente pas de faire du web. On s'engage a vos cotes comme de vrais partenaires.</p>
+                    <div class="ag-values-grid">
+                        <div class="ag-value">
+                            <h4>Transparence totale</h4>
+                            <p>Pas de jargon, pas de frais caches. On vous explique tout simplement.</p>
+                        </div>
+                        <div class="ag-value">
+                            <h4>Resultats concrets</h4>
+                            <p>Chaque euro investi doit vous rapporter. On pense ROI, pas pixels.</p>
+                        </div>
+                        <div class="ag-value">
+                            <h4>Proximite</h4>
+                            <p>On repond en 24h max. Toujours le meme interlocuteur, jamais un robot.</p>
+                        </div>
+                        <div class="ag-value">
+                            <h4>Engagement long terme</h4>
+                            <p>On ne disparait pas apres la livraison. On reste a vos cotes pour grandir ensemble.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ag-visual reveal">
+                    <div class="ag-photo" style="aspect-ratio: 4/3;">
+                        <img src="https://images.unsplash.com/photo-1623788317768-5b8aae35264d?w=800&q=80" alt="Vue aerienne de Toulouse, la Ville Rose" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 : BNI / RESEAU -->
+        <section class="ag-section alt">
+            <div class="ag-layout reverse">
+                <div class="ag-text reveal">
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        Reseau
+                    </span>
+                    <h2>Ancres dans le tissu local.</h2>
+                    <p>On ne travaille pas seuls dans notre coin. On est actifs dans les reseaux d'entrepreneurs toulousains, notamment au <strong>BNI</strong>, ou on echange chaque semaine avec d'autres dirigeants qui partagent nos valeurs.</p>
+                    <p>Cette implication locale, c'est ce qui nourrit notre comprehension de vos enjeux. On connait les defis des TPE/PME parce qu'on les vit au quotidien avec vous.</p>
+                </div>
+                <div class="ag-visual reveal">
+                    <div class="ag-photo" style="aspect-ratio: 4/3;">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Reunion de networking BNI Toulouse" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP CTA -->
+        <section class="ag-map-cta">
+            <div class="ag-map-box reveal">
+                <div>
+                    <h2>Venez nous rencontrer.</h2>
+                    <p>On est bases a Toulouse. Passez nous voir, prenez un cafe avec nous, et repartez avec une vision claire de votre strategie digitale.</p>
+                    <a href="https://maps.app.goo.gl/W36m56BZESvxDE818" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Voir sur Google Maps
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <div style="margin-top: 16px;">
+                        <a href="https://calendar.app.google/M3RFtpdJPuUSrRJf7" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+                            Prendre rendez-vous
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="ag-map-iframe">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.5!2d1.4442!3d43.6047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM2JzE2LjkiTiAxwrAyNic0MC4xIkU!5e0!3m2!1sfr!2sfr!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Solayia - Toulouse"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3><img src="assets/logo-solayia-5.png" alt="Solayia" style="height: 28px; width: auto;"></h3>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Votre partenaire digital a Toulouse. Le client vient a toi.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="agence.html">Agence</a></li>
+                        <li><a href="prestations.html">Prestations</a></li>
+                        <li><a href="realisations.html">Réalisations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="legal.html">Mentions Legales</a></li>
+                        <li><a href="legal.html#confidentialite">Politique de Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Solayia. Tous droits reserves.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -116,7 +116,7 @@ section { padding: 100px 5%; position: relative; }
     align-items: center;
 }
 .logo img {
-    height: 32px;
+    height: 42px;
     width: auto;
     display: block;
 }
@@ -124,7 +124,7 @@ section { padding: 100px 5%; position: relative; }
 .logo .logo-light { display: none; }
 .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 40px;
     align-items: center;
 }
 .nav-links a {
@@ -158,7 +158,7 @@ section { padding: 100px 5%; position: relative; }
     justify-content: center;
     gap: 8px;
     padding: 10px 24px;
-    border-radius: var(--radius-sm);
+    border-radius: 50px;
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 0.95rem;
