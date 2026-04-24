@@ -30,7 +30,7 @@
       "name": "Solayia",
       "description": "Agence digitale partenaire des TPE/PME. Création de sites web, e-commerce, SEO local, acquisition digitale et maintenance.",
       "url": "https://solayia.github.io/solayia/",
-      "logo": "https://solayia.github.io/solayia/assets/logo-solayia-4.png",
+      "logo": "https://solayia.github.io/solayia/assets/og-solayia.png",
       "image": "https://solayia.github.io/solayia/assets/IMG_0601.jpeg",
       "telephone": "",
       "address": {
@@ -909,21 +909,132 @@
             </div>
         </section>
 
-        <!-- ===== NOS OFFRES (compact prestations grid) ===== -->
+        <!-- ===== NOS OFFRES (premium grid) ===== -->
         <section style="padding: 100px 5%; background: #FFF;">
             <style>
-                .home-offers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-                .home-offer { background: #FAFAFA; border: 1px solid #E8ECF1; border-radius: 20px; padding: 24px 20px 22px; display: flex; flex-direction: column; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, border-color 0.3s ease; position: relative; overflow: hidden; }
-                .home-offer:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,45,91,0.08); border-color: var(--primary-light); }
-                .home-offer::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(135deg,var(--primary),var(--accent)); opacity:0; transition:opacity 0.3s ease; }
-                .home-offer:hover::before { opacity:1; }
-                .home-offer-icon { width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
-                .home-offer-icon svg { width:22px; height:22px; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-                .home-offer h4 { font-family:var(--font-heading); font-weight:800; font-size:1rem; letter-spacing:-0.02em; margin-bottom:8px; line-height:1.2; }
-                .home-offer .ho-price { font-family:var(--font-heading); font-weight:900; font-size:1.15rem; color:var(--primary); margin-top:auto; padding-top:12px; }
-                .home-offer .ho-price span { font-size:0.78rem; font-weight:600; color:var(--text-muted); }
-                .home-offer .ho-price .ho-from { font-size:0.72rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:2px; }
-                .home-offer .ho-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.5; margin-bottom:0; flex:1; }
+                .home-offers-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 16px;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                .home-offer {
+                    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+                    border: 1px solid rgba(27,45,91,0.08);
+                    border-radius: 20px;
+                    padding: 28px 22px 24px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                }
+                .home-offer::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at 20% 20%, rgba(27,45,91,0.03) 0%, transparent 60%);
+                    pointer-events: none;
+                }
+                .home-offer::after {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0;
+                    height: 3px;
+                    background: linear-gradient(135deg, var(--primary), var(--accent));
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                .home-offer:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 20px 50px rgba(27,45,91,0.10), 0 0 0 1px rgba(27,45,91,0.06);
+                    border-color: rgba(27,45,91,0.15);
+                }
+                .home-offer:hover::after { opacity: 1; }
+                .home-offer-icon {
+                    width: 52px; height: 52px;
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 18px;
+                    position: relative;
+                    z-index: 1;
+                }
+                .home-offer-icon svg {
+                    width: 24px; height: 24px;
+                    fill: none; stroke-width: 1.8;
+                    stroke-linecap: round; stroke-linejoin: round;
+                }
+                .home-offer h4 {
+                    font-family: var(--font-heading);
+                    font-weight: 800;
+                    font-size: 1.02rem;
+                    letter-spacing: -0.02em;
+                    margin-bottom: 8px;
+                    line-height: 1.25;
+                    position: relative;
+                    z-index: 1;
+                }
+                .home-offer .ho-desc {
+                    font-size: 0.84rem;
+                    color: var(--text-muted);
+                    line-height: 1.55;
+                    margin-bottom: 0;
+                    flex: 1;
+                    position: relative;
+                    z-index: 1;
+                }
+                .home-offer .ho-arrow {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 32px; height: 32px;
+                    border-radius: 50%;
+                    background: rgba(27,45,91,0.06);
+                    margin-top: 14px;
+                    transition: background 0.3s ease, transform 0.3s ease;
+                    position: relative;
+                    z-index: 1;
+                }
+                .home-offer .ho-arrow svg {
+                    width: 14px; height: 14px;
+                    stroke: var(--primary);
+                    fill: none; stroke-width: 2.5;
+                }
+                .home-offer:hover .ho-arrow {
+                    background: var(--primary);
+                    transform: translateX(4px);
+                }
+                .home-offer:hover .ho-arrow svg { stroke: #FFF; }
+                /* Alternating accent backgrounds */
+                .home-offer:nth-child(2) .home-offer-icon,
+                .home-offer:nth-child(4) .home-offer-icon,
+                .home-offer:nth-child(6) .home-offer-icon,
+                .home-offer:nth-child(8) .home-offer-icon {
+                    background: rgba(212,168,75,0.1);
+                }
+                .home-offer:nth-child(2) .home-offer-icon svg,
+                .home-offer:nth-child(4) .home-offer-icon svg,
+                .home-offer:nth-child(6) .home-offer-icon svg,
+                .home-offer:nth-child(8) .home-offer-icon svg {
+                    stroke: var(--accent);
+                }
+                .home-offer:nth-child(1) .home-offer-icon,
+                .home-offer:nth-child(3) .home-offer-icon,
+                .home-offer:nth-child(5) .home-offer-icon,
+                .home-offer:nth-child(7) .home-offer-icon {
+                    background: rgba(27,45,91,0.07);
+                }
+                .home-offer:nth-child(1) .home-offer-icon svg,
+                .home-offer:nth-child(3) .home-offer-icon svg,
+                .home-offer:nth-child(5) .home-offer-icon svg,
+                .home-offer:nth-child(7) .home-offer-icon svg {
+                    stroke: var(--primary);
+                }
                 @media (max-width:900px) { .home-offers-grid { grid-template-columns: 1fr 1fr; } }
                 @media (max-width:500px) { .home-offers-grid { grid-template-columns: 1fr; } }
             </style>
@@ -938,44 +1049,52 @@
                 </div>
                 <div class="home-offers-grid">
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
                         <h4>Site vitrine & E-commerce</h4>
                         <p class="ho-desc">Votre vitrine digitale qui convertit.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
-                        <h4>Application mobile & SaaS</h4>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+                        <h4>Application mobile</h4>
                         <p class="ho-desc">De l'idée au déploiement.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
                         <h4>Référencement SEO / GEO</h4>
                         <p class="ho-desc">Apparaissez en premier sur Google.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
                         <h4>Acquisition digitale</h4>
                         <p class="ho-desc">Générez des leads qualifiés.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(11,15,26,0.05);"><svg viewBox="0 0 24 24" style="stroke:#333;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
                         <h4>Maintenance & hébergement</h4>
                         <p class="ho-desc">Votre site rapide et sécurisé.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
                         <h4>Design & charte graphique</h4>
                         <p class="ho-desc">L'image qui inspire confiance.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(27,45,91,0.08);"><svg viewBox="0 0 24 24" style="stroke:var(--primary);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
                         <h4>Page & avis Google</h4>
                         <p class="ho-desc">Boostez votre e-réputation locale.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                     <div class="home-offer reveal">
-                        <div class="home-offer-icon" style="background:rgba(212,168,75,0.1);"><svg viewBox="0 0 24 24" style="stroke:var(--accent);"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
+                        <div class="home-offer-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
                         <h4>Accompagnement LinkedIn</h4>
                         <p class="ho-desc">Votre machine à opportunités B2B.</p>
+                        <div class="ho-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;" class="reveal">
@@ -1154,7 +1273,7 @@
         </section>
 
         <!-- ===== VIDEO YOUTUBE ===== -->
-        <section style="padding: 100px 5%; background: #FAFAFA;">
+        <section style="padding: 40px 5% 60px; background: #FAFAFA;">
             <div class="container" style="max-width: 900px;">
                 <div class="reveal" style="text-align: center; margin-bottom: 40px;">
                     <span class="tag">
